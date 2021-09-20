@@ -8,4 +8,16 @@
     <string name="sms_code">СМС код</string>
     <string name="type_code">Введите код</string>
     <string name="Potverdit">Потдвердить</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="qr_code">QR code</string>
+    <string name="mapping">Филиалы</string>
+    <string name="shopping">Корзина</string>
+    <string name="profile">Профиль</string>
+    <string name="qr_code_how_work">Наведите свой сканер на QR-code который на столе, что-бы забронировать стол</string>
+    <string name="popular">Популярное</string>
+    <string name="All">Все</string>
+    <string name="Menu">Меню</string>
+    <string name="street">Филиал на улице:</string>
+    <string name="time_work">Режим работы:</string>
 </resources>

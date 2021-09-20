@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/register_background"
-    tools:context=".registration.CheckMessageFromFirebase">
+    tools:context=".application.registration.CheckMessageFromFirebase">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -49,6 +49,7 @@
 
         <in.aabhasjindal.otptextview.OtpTextView
             android:id="@+id/otpTextView"
+            android:focusable="false"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             app:bar_active_color="@color/green"
@@ -58,7 +59,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView6"
-            app:length="4"
+            app:length="6"
             app:otp_box_background="@color/white"
             app:otp_text_size="32sp" />
 

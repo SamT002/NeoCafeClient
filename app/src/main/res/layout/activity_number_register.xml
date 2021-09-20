@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/register_background"
-    tools:context=".registration.NumberRegisterActivity">
+    tools:context=".application.registration.NumberRegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,6 +26,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="35dp"
             android:text="@string/name_registation_number"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />

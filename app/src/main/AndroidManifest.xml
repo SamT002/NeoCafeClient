@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.neocafeteae1prototype">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,15 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NeoCafeTeae1Prototype"
         android:windowSoftInputMode="adjustPan|adjustResize">
-        <activity android:name=".registration.CheckMessageFromFirebase"
+        <activity android:name="com.example.neocafeteae1prototype.application.registration.CheckMessageFromFirebase"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-            android:name=".registration.NumberRegisterActivity"
+            android:name="com.example.neocafeteae1prototype.application.registration.NumberRegisterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".application.viewPager_root.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,20 +1,18 @@
-package com.example.neocafeteae1prototype.registration
+package com.example.neocafeteae1prototype.application.registration
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
+import com.example.neocafeteae1prototype.application.tools.BaseActivity
 import com.example.neocafeteae1prototype.R
 import com.example.neocafeteae1prototype.databinding.ActivityNumberRegisterBinding
 
-class NumberRegisterActivity : AppCompatActivity() {
+class NumberRegisterActivity : BaseActivity() {
 
     private lateinit var binding:ActivityNumberRegisterBinding
+    private val intentToMessageActivity by lazy {Intent(this, CheckMessageFromFirebase::class.java)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +39,9 @@ class NumberRegisterActivity : AppCompatActivity() {
     }
 
     fun onSendMessage(view: View) {
-        startActivity(Intent(this, CheckMessageFromFirebase::class.java))
+        insertDataToSharedPreferences("name", binding.name.text.toString())
+        intentToMessageActivity.putExtra("numberPhone","+996${binding.numberPhone.text.toString()}")
+        startActivity(intentToMessageActivity)
     }
 
 
