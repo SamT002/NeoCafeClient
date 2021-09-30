@@ -1,57 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/main_purple_enable_color"
     android:layout_height="match_parent"
-    tools:context=".application.viewpager_items.shopping.ShoppingFragment">
+    android:background="@color/main_purple_enable_color"
+    android:orientation="vertical"
+    tools:context=".application.bottom_navigation_items.shopping.ShoppingFragment">
 
-    <androidx.appcompat.widget.Toolbar style="@style/Custom_toolbar">
+    <com.google.android.material.appbar.AppBarLayout style="@style/default_app_bar">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="@style/Collapsing_Layout_Default"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
             <TextView
                 android:id="@+id/textView"
+                style="@style/Toolbar_title_text"
+                android:layout_gravity="center"
                 android:text="@string/shopping"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/Toolbar_title_text" />
+                app:layout_collapseMode="parallax" />
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/notificaton"
+                style="@style/toolbar_icon_image"
+                android:layout_gravity="end|center_vertical"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/ic_bell"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_collapseMode="parallax" />
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/layout_top_rounded"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/receipt_history"
+                style="@style/TextView_14sp_Roboto"
+                android:layout_marginTop="34dp"
+                android:layout_marginEnd="@dimen/margin_30_dp"
+                android:text="@string/history"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="@dimen/margin_10_dp"
+                android:src="@drawable/ic_history"
+                app:layout_constraintEnd_toStartOf="@+id/receipt_history"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/receipt_history" />
+
+            <TextView
+                android:id="@+id/textView17"
+                style="@style/TextView_14sp_Roboto"
+                android:layout_marginStart="@dimen/margin_10_dp"
+                android:layout_marginTop="52dp"
+                android:text="Добавить еще "
+                android:textColor="@color/main_purple_enable_color"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:layout_marginStart="@dimen/margin_20_dp"
+                android:src="@drawable/ic_baseline_add_circle_outline_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/appCompatButton2"
+                style="@style/registration_button"
+                android:layout_width="160dp"
+                android:layout_marginStart="@dimen/default_margin_start_16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/disable_shopping"
+                android:text="@string/delivery"
+                android:textColor="@color/main_purple_enable_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/registration_button"
+                android:layout_width="160dp"
+                android:layout_marginStart="@dimen/default_margin_start_16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/button_enable_custom_style"
+                android:text="В заведении"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <TextView
+                android:id="@+id/text_viwe"
+                style="@style/Toolbar_title_text"
+                android:layout_marginStart="@dimen/default_margin_start_16dp"
+                android:layout_marginTop="@dimen/margin_30_dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/result"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatButton2" />
+
+            <TextView
+                android:id="@+id/result"
+                style="@style/Toolbar_title_text"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="@dimen/margin_30_dp"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/text_viwe"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatButton2" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/registration_button"
+                android:layout_marginTop="@dimen/margin_30_dp"
+                android:background="@drawable/button_enable_custom_style"
+                android:text="@string/order"
+                android:textColor="@color/white"
+                android:layout_marginBottom="@dimen/margin_30_dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/result" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.appcompat.widget.Toolbar>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/layout_top_rounded"/>
+    </androidx.core.widget.NestedScrollView>
 
 
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

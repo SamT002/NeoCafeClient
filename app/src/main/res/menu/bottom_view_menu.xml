@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home_nav_graph"
+        android:icon="@drawable/custom_home_item"
+        app:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/shopping_nav_graph"
+        android:icon="@drawable/custom_shoppingcart"
+        android:title=""
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/qr_nav_graph"
+        android:title=""
+        android:icon="@drawable/ic_qrcode"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/mapping_nav_graph"
+        android:title=""
+        android:icon="@drawable/custom_mapping_item"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/user_nav_graph"
+        android:title=""
+        android:icon="@drawable/custom_user"
+        app:showAsAction="ifRoom" />
+
+</menu>

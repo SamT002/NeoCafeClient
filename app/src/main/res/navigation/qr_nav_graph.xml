@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/qr_nav_graph"
+    app:startDestination="@id/QRcodeFragment">
+
+    <fragment
+        android:id="@+id/QRcodeFragment"
+        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.qr.QRcodeFragment"
+        android:label="fragment_qrcode"
+        tools:layout="@layout/fragment_qrcode" >
+        <action
+            android:id="@+id/action_QRcodeFragment_to_checkTableFragment"
+            app:destination="@id/checkTableFragment" />
+        <action
+            android:id="@+id/action_QRcodeFragment_to_notification4"
+            app:destination="@id/notification4" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkTableFragment"
+        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.qr.CheckTableFragment"
+        android:label="fragment_check_table"
+        tools:layout="@layout/fragment_check_table" >
+        <argument
+            android:name="tableId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/notification4"
+        android:name="com.example.neocafeteae1prototype.application.notification.Notification"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+</navigation>

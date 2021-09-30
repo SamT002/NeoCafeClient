@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_purple_enable_color"
+    tools:context=".application.bottom_navigation_items.branches.BranchesDetailFragment">
+
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_branches" />
+
+    <androidx.core.widget.NestedScrollView
+        style="@style/default_nested_scroll_view"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/Constraint_Layout_Default"
+            android:background="@drawable/layout_top_rounded">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                style="@style/CardView_Default"
+                android:layout_height="200dp"
+                android:layout_margin="@dimen/margin_start_16_dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/branch_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small_5"
+                android:src="@drawable/neocafe"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+            <TextView
+                android:id="@+id/address_of_branch"
+                style="@style/TextView_18sp_Thin"
+                android:layout_marginTop="@dimen/margin_10_dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/on_the_map"
+                style="@style/CardView_Default"
+                android:layout_marginStart="@dimen/margin_start_16_dp"
+                android:layout_marginTop="@dimen/margin_10_dp"
+                android:layout_marginEnd="@dimen/margin_start_16_dp"
+                android:backgroundTint="@color/main_purple_enable_color"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="@dimen/ten_radius_card_view"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/address_of_branch">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="60dp"
+                    android:src="@drawable/ic_mappin_white" />
+
+                <TextView
+                    style="@style/TextView_16sp_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/on_the_map"
+                    android:textColor="@color/white" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_time"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/on_the_map" />
+
+            <TextView
+                android:id="@+id/textView13"
+                style="@style/TextView_18sp_Bold"
+                android:layout_marginStart="@dimen/margin_start_16_dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/about_branch"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_time" />
+
+            <TextView
+                android:id="@+id/branch_info"
+                style="@style/TextView_16sp_Roboto"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="@dimen/default_margin_start_16dp"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/default_margin_start_16dp"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13"
+                tools:text="Hello World" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/call"
+                style="@style/CardView_Default"
+                android:layout_marginStart="@dimen/margin_start_16_dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="@dimen/default_margin_start_16dp"
+                android:backgroundTint="@color/main_purple_enable_color"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="@dimen/ten_radius_card_view"
+                app:cardElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/branch_info">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="70dp"
+                    android:src="@drawable/ic_call" />
+
+                <TextView
+                    style="@style/TextView_16sp_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/call"
+                    android:textColor="@color/white" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/instagram"
+                style="@style/CardView_Default"
+                android:layout_width="150dp"
+                android:layout_margin="@dimen/margin_start_16_dp"
+                android:backgroundTint="@color/main_purple_enable_color"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/call">
+
+                <TextView
+                    style="@style/TextView_16sp_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="15dp"
+                    android:text="Инстаграм"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/margin_10_dp"
+                    android:src="@drawable/ic_instagram" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/facebook"
+                style="@style/CardView_Default"
+                android:layout_width="150dp"
+                android:layout_margin="@dimen/margin_start_16_dp"
+                android:backgroundTint="@color/main_purple_enable_color"
+                android:clickable="true"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/call">
+
+                <TextView
+                    style="@style/TextView_16sp_Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="15dp"
+                    android:text="Facebook"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/margin_10_dp"
+                    android:src="@drawable/ic_facebook" />
+
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

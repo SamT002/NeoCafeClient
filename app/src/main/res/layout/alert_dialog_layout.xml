@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="350dp"
+    android:layout_height="250dp"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/margin_10_dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="280dp"
+        style="@style/Toolbar_title_text"
+        android:gravity="center"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="@dimen/margin_10_dp"
+        android:layout_marginEnd="@dimen/margin_10_dp"
+        android:textColor="#515050"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Hello world" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="280dp"
+        style="@style/TextView_16sp_Bold"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/margin_10_dp"
+        android:layout_marginEnd="@dimen/margin_10_dp"
+        android:layout_marginTop="@dimen/default_margin_start_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:text="Hello world" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/negative_button"
+        style="@style/TextView_16sp_Bold"
+        android:layout_marginTop="@dimen/margin_30_dp"
+        android:layout_margin="@dimen/margin_20_dp"
+        android:background="@drawable/custom_button_positive"
+        android:text="НЕТ"
+        android:textColor="@color/main_purple_enable_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/positive_button"
+        style="@style/TextView_16sp_Bold"
+        android:layout_margin="@dimen/margin_20_dp"
+        android:layout_marginTop="@dimen/margin_30_dp"
+        android:background="@drawable/custom_button_negative"
+        android:text="ДА"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

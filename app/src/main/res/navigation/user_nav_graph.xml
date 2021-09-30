@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_nav_graph"
+    app:startDestination="@id/userFragment">
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.user.user.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_userShoppingHistory"
+            app:destination="@id/userShoppingHistory" />
+        <action
+            android:id="@+id/action_userFragment_to_notification5"
+            app:destination="@id/notification5" />
+    </fragment>
+    <fragment
+        android:id="@+id/userShoppingHistory"
+        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.user.user_shopping_history.UserShoppingHistory"
+        android:label="fragment_user_shopping_history"
+        tools:layout="@layout/fragment_user_shopping_history" >
+        <action
+            android:id="@+id/action_userShoppingHistory_to_receiptDetailFragment"
+            app:destination="@id/receiptDetailFragment" />
+        <action
+            android:id="@+id/action_userShoppingHistory_to_notification5"
+            app:destination="@id/notification5" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptDetailFragment"
+        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.user.user_shopping_history.ReceiptDetailFragment"
+        android:label="fragment_receipt_detail"
+        tools:layout="@layout/fragment_receipt_detail" >
+        <argument
+            android:name="receiptModel"
+            app:argType="com.example.neocafeteae1prototype.domain.sealedClasses.AllModels$Receipt" />
+        <action
+            android:id="@+id/action_receiptDetailFragment_to_notification5"
+            app:destination="@id/notification5" />
+    </fragment>
+    <fragment
+        android:id="@+id/notification5"
+        android:name="com.example.neocafeteae1prototype.application.notification.Notification"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+</navigation>

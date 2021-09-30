@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_nav"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.neocafeteae1prototype.application.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_registrationNumberFirebaseFragment"
+            app:destination="@id/registrationNumberFirebaseFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_bottomViewFragment3"
+            app:destination="@id/bottomViewFragment3"
+            app:popUpTo="@id/root_nav"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationNumberFirebaseFragment"
+        android:name="com.example.neocafeteae1prototype.application.registration.RegistrationNumberFirebaseFragment"
+        android:label="fragment_registration_number_firebase"
+        tools:layout="@layout/fragment_registration_number_firebase" >
+        <action
+            android:id="@+id/action_registrationNumberFirebaseFragment_to_receiveMessageFirebaseFragment"
+            app:destination="@id/receiveMessageFirebaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiveMessageFirebaseFragment"
+        android:name="com.example.neocafeteae1prototype.application.registration.ReceiveMessageFirebaseFragment"
+        android:label="fragment_receive_message_firebase"
+        tools:layout="@layout/fragment_receive_message_firebase" >
+        <action
+            android:id="@+id/action_receiveMessageFirebaseFragment_to_registrationBirthdayFragment"
+            app:destination="@id/registrationBirthdayFragment"
+            app:popUpTo="@id/root_nav" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationBirthdayFragment"
+        android:name="com.example.neocafeteae1prototype.application.registration.RegistrationBirthdayFragment"
+        android:label="fragment_registration_birthday"
+        tools:layout="@layout/fragment_registration_birthday" >
+        <action
+            android:id="@+id/action_registrationBirthdayFragment_to_bottomViewFragment3"
+            app:destination="@id/bottomViewFragment3"
+            app:popUpTo="@id/root_nav"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/bottomViewFragment3"
+        android:name="com.example.neocafeteae1prototype.application.root.BottomViewFragment"
+        android:label="fragment_bottom_view"
+        tools:layout="@layout/fragment_bottom_view" />
+</navigation>

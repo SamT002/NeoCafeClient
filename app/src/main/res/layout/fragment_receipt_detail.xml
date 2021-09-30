@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_purple_enable_color"
+    tools:context=".application.bottom_navigation_items.user.user_shopping_history.ReceiptDetailFragment">
+
+    <com.google.android.material.appbar.AppBarLayout style="@style/default_app_bar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout style="@style/Collapsing_Layout_Default">
+
+            <ImageView
+                android:id="@+id/back"
+                style="@style/toolbar_icon_image"
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/back_icon" />
+
+            <TextView
+                style="@style/Toolbar_title_text"
+                android:layout_gravity="center"
+                android:text="@string/history" />
+
+            <ImageView
+                android:id="@+id/notification"
+                style="@style/toolbar_icon_image"
+                android:layout_gravity="end|center_vertical"
+                android:src="@drawable/ic_bell" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        style="@style/default_nested_scroll_view"
+        android:background="@color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="330dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/margin_start_16_dp"
+            android:background="@drawable/custom_button_positive">
+
+            <TextView
+                android:id="@+id/when"
+                style="@style/TextView_14sp_Bold"
+                android:layout_marginStart="@dimen/margin_6_dp"
+                android:layout_marginTop="@dimen/margin_6_dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="5 minut ago" />
+
+            <TextView
+                android:id="@+id/textview"
+                style="@style/TextView_18sp_Bold"
+                android:layout_marginStart="@dimen/margin_6_dp"
+                android:layout_marginTop="15dp"
+                android:text="Филиал на улице "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/when" />
+
+            <TextView
+                android:id="@+id/address"
+                style="@style/TextView_18sp_Bold"
+                android:layout_marginStart="@dimen/margin_6_dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@id/textview"
+                app:layout_constraintTop_toBottomOf="@id/when" />
+
+            <TextView
+                android:id="@+id/time"
+                style="@style/TextView_14sp_Bold"
+                android:layout_marginTop="@dimen/margin_6_dp"
+                android:layout_marginEnd="@dimen/margin_6_dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="13 : 38" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_10_dp"
+                android:layout_marginBottom="@dimen/default_margin_start_16dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView18"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview" />
+
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_margin="@dimen/default_margin_start_16dp"
+                style="@style/TextView_18sp_Bold"
+                android:text="@string/result"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/total_price"
+                style="@style/TextView_18sp_Bold"
+                android:layout_marginEnd="@dimen/margin_10_dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="@dimen/default_margin_start_16dp"
+                tools:text="500" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

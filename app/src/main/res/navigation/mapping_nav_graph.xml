@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mapping_nav_graph"
+    app:startDestination="@id/branchFragment">
+
+    <fragment
+        android:id="@+id/branchFragment"
+        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.branches.BranchFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_branchFragment_to_branchesDetailFragment"
+            app:destination="@id/branchesDetailFragment"
+            app:enterAnim="@anim/fade_in" />
+        <action
+            android:id="@+id/action_branchFragment_to_notification2"
+            app:destination="@id/notification2" />
+    </fragment>
+    <fragment
+        android:id="@+id/branchesDetailFragment"
+        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.branches.BranchesDetailFragment"
+        android:label="fragment_branch"
+        tools:layout="@layout/fragment_detail_branch" >
+        <argument
+            android:name="model"
+            app:argType="com.example.neocafeteae1prototype.domain.sealedClasses.AllModels$NeoCafePlace" />
+        <action
+            android:id="@+id/action_branchesDetailFragment_to_notification2"
+            app:destination="@id/notification2" />
+    </fragment>
+    <fragment
+        android:id="@+id/notification2"
+        android:name="com.example.neocafeteae1prototype.application.notification.Notification"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+</navigation>

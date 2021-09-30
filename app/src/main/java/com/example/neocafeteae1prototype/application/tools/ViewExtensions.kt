@@ -1,44 +1,45 @@
 package com.example.neocafeteae1prototype.application.tools
 
-import android.app.AlertDialog
 import android.content.Context
-import android.os.Bundle
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
+import androidx.core.content.ContextCompat
+import com.example.neocafeteae1prototype.R
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 
-fun Fragment.toast(context: Context, message:String){
-    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+
+fun String.showToast(context: Context, duration: Int) {
+    Toast.makeText(context, this, duration).show()
 }
 
-fun Fragment.showSnackBar(view: View, message:String, snackbarDuration: Int){
-    Snackbar.make(view, message, snackbarDuration)
+fun String.logging() {
+    Log.i("TAG", this)
+}
+
+fun String.showSnackBar(view: View, duration: Int) {
+    Snackbar.make(view, this, duration).show()
 }
 
 
-infix fun TextView.text(text : String) {
-    this.text= text
+infix fun TextView.text(text: String) {
+    this.text = text
 }
 
-class basealertdialo<binding : ViewBinding> : DialogFragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
+fun ImageView.loadWithPicasso(image: String) {
+    Picasso.with(this.context)
+        .load(image)
+        .into(this)
 
 }
-fun View.gone(){
-    this.visibility = View.GONE
+
+
+fun TextView.setWhiteColor(context: Context) {
+    this.setTextColor(ContextCompat.getColor(context, R.color.white))
 }
 
-fun String.printNumber(){
-    this + "1"
-}
 
 

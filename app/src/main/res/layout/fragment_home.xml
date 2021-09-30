@@ -1,54 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".application.viewpager_items.home.HomeFragment">
+    android:fitsSystemWindows="true"
+    android:background="@color/main_purple_enable_color"
+    tools:context=".application.bottom_navigation_items.home.HomeFragment.HomeFragment">
 
-    <androidx.appcompat.widget.Toolbar style="@style/Custom_toolbar">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/main_purple_enable_color"
+        android:fitsSystemWindows="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="@style/Collapsing_Layout_Default"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
-            <TextView
-                android:id="@+id/textView"
-                style="@style/Toolbar_title_text"
-                android:textSize="28sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Hello world" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/Constraint_Layout_Default"
+                android:layout_height="60dp"
+                android:background="@color/main_purple_enable_color"
+                app:layout_collapseMode="parallax">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_bell"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/userName"
+                    style="@style/Toolbar_title_text"
+                    android:textSize="28sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Hello world" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_magnifyingglass"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/notification_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="@dimen/margin_10_dp"
+                    android:src="@drawable/ic_bell"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/search_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/ic_magnifyingglass"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
-        <androidx.core.widget.NestedScrollView style="@style/default_nested_scroll_view">
+
+        <androidx.core.widget.NestedScrollView style="@style/default_nested_scroll_view"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -57,19 +72,19 @@
 
                 <TextView
                     android:id="@+id/textView8"
-                    style="@style/textView_naimenovanie"
-                    android:layout_marginStart="16dp"
+                    style="@style/TextView_Main_Names"
+                    android:layout_marginStart="@dimen/default_margin_start_16dp"
                     android:layout_marginTop="25dp"
                     android:text="@string/popular"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    style="@style/default_text_view"
+                    style="@style/TextView_16sp_Roboto"
                     android:layout_marginTop="36dp"
                     android:layout_marginEnd="22dp"
                     android:text="@string/All"
-                    android:textColor="#5D5A65"
+                    android:textColor="@color/main_purple_disabled_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,8 +99,8 @@
 
                 <TextView
                     android:id="@+id/textView9"
-                    style="@style/textView_naimenovanie"
-                    android:layout_marginStart="16dp"
+                    style="@style/TextView_Main_Names"
+                    android:layout_marginStart="@dimen/default_margin_start_16dp"
                     android:layout_marginTop="50dp"
                     android:text="@string/Menu"
                     app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +109,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/menu_recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
                     app:layout_constraintBottom_toTopOf="@id/invisible_text"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -116,4 +132,4 @@
         </androidx.core.widget.NestedScrollView>
 
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

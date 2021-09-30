@@ -1,40 +1,38 @@
-<androidx.appcompat.widget.Toolbar style="@style/Custom_toolbar"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/default_app_bar">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        style="@style/Collapsing_Layout_Default"
+        app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
         <TextView
             android:id="@+id/textView"
-            android:text="@string/mapping"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/Toolbar_title_text" />
+            app:layout_collapseMode="parallax"
+            style="@style/Toolbar_title_text"
+            android:layout_gravity="center"
+            android:text="@string/mapping" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/back_button_"
+            app:layout_collapseMode="parallax"
+            style="@style/toolbar_icon_image"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginTop="@dimen/margin_10_dp"
+            android:src="@drawable/ic_back" />
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/notification"
+            app:layout_collapseMode="parallax"
+            android:layout_gravity="end|center_vertical"
+            style="@style/toolbar_icon_image"
             android:layout_marginEnd="20dp"
-            android:src="@drawable/ic_bell"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:src="@drawable/ic_bell" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-</androidx.appcompat.widget.Toolbar>
+</com.google.android.material.appbar.AppBarLayout>
+
+
+

@@ -2,13 +2,14 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:state_enabled="true"
+        android:state_checked="true"
         android:state_selected="true"
         android:drawable="@drawable/ic_house_enable"/>
 
     <item
-        android:state_enabled="false"
+        android:state_checked="false"
         android:state_selected="false"
+        android:state_focused="false"
         android:drawable="@drawable/ic_house"/>
 
 </selector>

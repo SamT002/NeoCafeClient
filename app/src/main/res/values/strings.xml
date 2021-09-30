@@ -20,4 +20,24 @@
     <string name="Menu">Меню</string>
     <string name="street">Филиал на улице:</string>
     <string name="time_work">Режим работы:</string>
+    <string name="send_again">Отправить повторно</string>
+    <string name="if_message_null">Если код не пришел, нажмите кнопку отправить повторно</string>
+    <string name="on_the_map">На карте</string>
+    <string name="about_branch">Описание</string>
+    <string name="call">Позвонить</string>
+    <string name="skip">Пропустить</string>
+    <string name="registration">Регистрация</string>
+    <string name="birthday">Введите дату рожденя для дольнейшего начисления бонусов</string>
+    <string name="type_birthday">Дата рождения</string>
+    <string name="birthday_example">23.06.2021</string>
+    <string name="sign_in">Войти</string>
+    <string name="result_bonus">Вы накопили</string>
+    <string name="bonus">бонусов</string>
+    <string name="history">История заказов</string>
+    <string name="neocafe_news">Получать новости от neocafe ?</string>
+    <string name="clear">Очистить</string>
+    <string name="result">И того:</string>
+    <string name="notification">Уведомление</string>
+    <string name="delivery">C собой</string>
+    <string name="order">Заказать</string>
 </resources>
