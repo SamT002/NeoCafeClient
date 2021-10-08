@@ -35,6 +35,10 @@ class BranchesDetailFragment : BaseFragment<FragmentDetailBranchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setData(args.model)
+        setUpToolbar()
+    }
+
+    private fun setUpToolbar() {
         binding.include.notification.setOnClickListener {
             findNavController().navigate(BranchesDetailFragmentDirections.actionBranchesDetailFragmentToNotification2())
         }

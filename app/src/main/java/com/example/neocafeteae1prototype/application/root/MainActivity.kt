@@ -23,7 +23,10 @@ class MainActivity : AppCompatActivity() {
         connectionLiveData = ConnectionLiveData(this)
 
         val snackbar = Snackbar.make(binding.view, "No Internet", Snackbar.LENGTH_INDEFINITE)
-                .setBackgroundTint(ContextCompat.getColor(this, R.color.red))
+        snackbar.setAction("Закрыть") {
+            snackbar.dismiss()
+        }
+            .setBackgroundTint(ContextCompat.getColor(this, R.color.red))
 
         connectionLiveData.observe(this, {
             if (it == false) snackbar.show()

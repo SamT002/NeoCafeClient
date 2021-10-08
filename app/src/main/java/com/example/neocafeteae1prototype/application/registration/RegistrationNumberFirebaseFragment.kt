@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.neocafeteae1prototype.R
 import com.example.neocafeteae1prototype.application.tools.BaseFragment
 import com.example.neocafeteae1prototype.application.tools.Consts
+import com.example.neocafeteae1prototype.application.tools.visible
 import com.example.neocafeteae1prototype.databinding.FragmentRegistrationNumberFirebaseBinding
 
 
@@ -20,8 +21,9 @@ class RegistrationNumberFirebaseFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.numberPhone.addTextChangedListener {
-            if (it?.length == 9 && binding.name.text.isNotEmpty()) {
+            if (it?.length == 11 && binding.name.text.isNotEmpty()) {
                 binding.nextButton.apply {
                     background = ContextCompat.getDrawable(
                             requireContext(),
@@ -29,7 +31,11 @@ class RegistrationNumberFirebaseFragment :
                     )
                     isEnabled = true
                 }
-            } else {
+            }else if (it?.length!! >= 1){
+                binding.numberCode.visible()
+            }
+
+            else {
                 binding.nextButton.apply {
                     background = ContextCompat.getDrawable(
                             requireContext(),
@@ -44,7 +50,7 @@ class RegistrationNumberFirebaseFragment :
 
     }
 
-    fun sendMessage() {
+    private fun sendMessage() {
         insertDataToSharedPreference(binding.name.text.toString(), "+996${binding.numberPhone.text.toString()}")
         findNavController().navigate(
                 RegistrationNumberFirebaseFragmentDirections.actionRegistrationNumberFirebaseFragmentToReceiveMessageFirebaseFragment(

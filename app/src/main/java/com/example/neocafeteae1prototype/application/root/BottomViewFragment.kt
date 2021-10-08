@@ -32,7 +32,7 @@ class BottomViewFragment : TabNavigationClass(R.layout.fragment_bottom_view) {
         _binding = FragmentBottomViewBinding.inflate(inflater, container, false)
 
         selectedTab = tabs[0]
-        selectTab(tabs[0])
+        selectTab(tabs[2])
 
         binding.bottomNavigationView.itemIconTintList = null
         binding.bottomNavigationView.setOnItemSelectedListener {

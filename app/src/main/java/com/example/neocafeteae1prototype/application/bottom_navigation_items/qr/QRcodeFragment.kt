@@ -49,6 +49,7 @@ class QRcodeFragment : BaseFragment<FragmentQrcodeBinding>() {
                 }
 
                 override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
+                    requestPermission()
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (ContextCompat.checkSelfPermission(
                                 requireContext(),

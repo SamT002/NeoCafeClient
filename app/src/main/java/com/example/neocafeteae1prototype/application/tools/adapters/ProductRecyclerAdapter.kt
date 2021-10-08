@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.neocafeteae1prototype.application.tools.delegates.SecondItemClickListener
 import com.example.neocafeteae1prototype.databinding.MenuItemBinding
 import com.example.neocafeteae1prototype.databinding.PopularItemBinding
 import com.example.neocafeteae1prototype.domain.sealedClasses.AllModels
 import com.squareup.picasso.Picasso
 
-class ProductRecyclerAdapter : RecyclerView.Adapter<ProductRecyclerAdapter.ViewHolder>() {
+class ProductRecyclerAdapter(val clicker:SecondItemClickListener?) : RecyclerView.Adapter<ProductRecyclerAdapter.ViewHolder>() {
 
     private var list = mutableListOf<AllModels.Popular>()
 
@@ -56,6 +57,10 @@ class ProductRecyclerAdapter : RecyclerView.Adapter<ProductRecyclerAdapter.ViewH
                 county-=1
                 notifyItemChanged(position)
             }
+        }
+
+        holder.itemView.setOnClickListener {
+            clicker?.holderClicked(list[position])
         }
     }
 

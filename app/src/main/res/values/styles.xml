@@ -94,6 +94,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@null</item>
         <item name="android:maxLines">1</item>
+        <item name="android:inputType">text</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">center</item>
@@ -177,10 +178,22 @@
         <item name="android:layout_marginEnd">@dimen/default_margin_start_16dp</item>
     </style>
 
+    <style name="DemoTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/main_purple_enable_color</item>
+        <item name="colorPrimaryDark">@color/main_purple_enable_color</item>
+        <item name="colorAccent">@color/main_purple_enable_color</item>
+    </style>
+
     <style name="Collapsing_Layout_Default">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:fitsSystemWindows">true</item>
+    </style>
+    
+    <style name="Custom_Chip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_background</item>
+        <item name="android:textColor">@color/chip_color</item>
+        <item name="checkedIconTint">@color/white</item>
     </style>
 
     <style name="default_app_bar">

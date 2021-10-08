@@ -6,7 +6,7 @@ import java.io.Serializable
 sealed class AllModels: Serializable{
 
     data class Popular(val name:String, val price:String, val image: Int, val star:Boolean,
-                       var county: Int): AllModels()
+                       var county: Int,val category: String): AllModels()
 
     data class Menu(val name:String, val image: Int): AllModels()
 

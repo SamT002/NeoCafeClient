@@ -14,8 +14,8 @@ import com.google.firebase.auth.FirebaseAuth
 class SplashFragment : Fragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?,
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_splash, container, false)
@@ -26,13 +26,12 @@ class SplashFragment : Fragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             nextFragment()
         }, 1500)
-
     }
 
     private fun nextFragment() {
         if (FirebaseAuth.getInstance().currentUser == null) {
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToBottomViewFragment3())
-//            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToRegistrationNumberFirebaseFragment())
+//                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToBottomViewFragment3())
+            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToRegistrationNumberFirebaseFragment())
         } else {
             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToBottomViewFragment3())
         }

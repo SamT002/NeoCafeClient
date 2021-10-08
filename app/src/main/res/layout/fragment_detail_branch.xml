@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/toolbar_branches" />
+        layout="@layout/appbar_notification_with_ic_back" />
 
     <androidx.core.widget.NestedScrollView
         style="@style/default_nested_scroll_view"
@@ -169,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|center_vertical"
                     android:layout_marginEnd="15dp"
-                    android:text="Инстаграм"
+                    android:text="@string/instagram"
                     android:textColor="@color/white" />
 
                 <ImageView
@@ -199,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|center_vertical"
                     android:layout_marginEnd="15dp"
-                    android:text="Facebook"
+                    android:text="@string/facebook"
                     android:textColor="@color/white" />
 
                 <ImageView

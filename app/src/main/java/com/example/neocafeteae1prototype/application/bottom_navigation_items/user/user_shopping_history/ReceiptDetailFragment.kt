@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.neocafeteae1prototype.R
 import com.example.neocafeteae1prototype.application.tools.BaseFragment
 import com.example.neocafeteae1prototype.application.tools.adapters.MainRecyclerAdapter
 import com.example.neocafeteae1prototype.databinding.FragmentReceiptDetailBinding
@@ -21,8 +22,7 @@ class ReceiptDetailFragment : BaseFragment<FragmentReceiptDetailBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpUi(safeArgs.receiptModel)
-        binding.back.setOnClickListener { findNavController().navigateUp() }
-        binding.notification.setOnClickListener { findNavController().navigate(ReceiptDetailFragmentDirections.actionReceiptDetailFragmentToNotification5()) }
+        setUpAppBar()
 
         binding.recycler.apply {
             adapter = recyclerAdapter
@@ -30,6 +30,12 @@ class ReceiptDetailFragment : BaseFragment<FragmentReceiptDetailBinding>() {
         }
 
         recyclerAdapter.setList(safeArgs.receiptModel.list)
+    }
+
+    private fun setUpAppBar() {
+        binding.include.backButton.setOnClickListener { findNavController().navigateUp() }
+        binding.include.notification.setOnClickListener { findNavController().navigate(ReceiptDetailFragmentDirections.actionReceiptDetailFragmentToNotification5()) }
+        binding.include.textView.text = resources.getText(R.string.history)
     }
 
     private fun setUpUi(receiptModel: AllModels.Receipt) {

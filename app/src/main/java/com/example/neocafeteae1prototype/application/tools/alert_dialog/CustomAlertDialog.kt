@@ -1,5 +1,7 @@
 package com.example.neocafeteae1prototype.application.tools.alert_dialog
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +21,7 @@ class CustomAlertDialog(var function: () -> Unit, var title: String?, var messag
         val width = resources.getDimensionPixelSize(R.dimen.choose_gender_width)
         val height = resources.getDimensionPixelSize(R.dimen.choose_gender_height)
         dialog?.window?.setLayout(width, height)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

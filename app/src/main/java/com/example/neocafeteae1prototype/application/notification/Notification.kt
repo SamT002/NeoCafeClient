@@ -83,6 +83,7 @@ class Notification : BaseFragment<FragmentNotificationBinding>() {
                 when (direction) {
                     ItemTouchHelper.LEFT -> {
                         Toast.makeText(requireContext(), "$position", Toast.LENGTH_LONG).show()
+                        viewModel.list.removeAt(position)
                         recyclerAdapter?.notifyItemRemoved(position)
                     }
                 }

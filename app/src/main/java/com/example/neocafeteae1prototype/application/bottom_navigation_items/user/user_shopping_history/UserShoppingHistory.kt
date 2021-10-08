@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.neocafeteae1prototype.R
 import com.example.neocafeteae1prototype.application.tools.BaseFragment
 import com.example.neocafeteae1prototype.application.tools.adapters.MainRecyclerAdapter
 import com.example.neocafeteae1prototype.application.tools.alert_dialog.CustomAlertDialog
@@ -15,14 +16,15 @@ import com.example.neocafeteae1prototype.application.tools.delegates.RecyclerIte
 import com.example.neocafeteae1prototype.databinding.FragmentUserShoppingHistoryBinding
 import com.example.neocafeteae1prototype.domain.sealedClasses.AllModels
 
-class UserShoppingHistory : BaseFragment<FragmentUserShoppingHistoryBinding>(), RecyclerItemClickListener {
+class UserShoppingHistory : BaseFragment<FragmentUserShoppingHistoryBinding>(),
+    RecyclerItemClickListener {
 
     private lateinit var recyclerAdapter: MainRecyclerAdapter
     private val viewModel by lazy { ViewModelProvider(this).get(UserShoppingViewModel::class.java) }
 
     override fun inflateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
     ): FragmentUserShoppingHistoryBinding {
         return FragmentUserShoppingHistoryBinding.inflate(inflater)
     }
@@ -30,8 +32,7 @@ class UserShoppingHistory : BaseFragment<FragmentUserShoppingHistoryBinding>(), 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerAdapter = MainRecyclerAdapter(this)
-        binding.back.setOnClickListener { findNavController().navigateUp() }
-        binding.notification.setOnClickListener { findNavController().navigate(UserShoppingHistoryDirections.actionUserShoppingHistoryToNotification5()) }
+        setUpAppBar()
 
         binding.recyclerView.apply {
             adapter = recyclerAdapter
@@ -43,12 +44,30 @@ class UserShoppingHistory : BaseFragment<FragmentUserShoppingHistoryBinding>(), 
         binding.clearReceipt.setOnClickListener { showAlertDialog() }
     }
 
-    private fun showAlertDialog() {
-        CustomAlertDialog(this::clearAllReceipt, null, "Вы правда хотите очистить историю заказ?").show(childFragmentManager, "TAG")
+    private fun setUpAppBar() {
+        binding.include.backButton.setOnClickListener { findNavController().navigateUp() }
+        binding.include.notification.setOnClickListener {
+            findNavController().navigate(
+                UserShoppingHistoryDirections.actionUserShoppingHistoryToNotification5()
+            )
+        }
+        binding.include.textView.text = resources.getText(R.string.history)
     }
 
-    override fun itemClicked(item: AllModels) {
-        findNavController().navigate(UserShoppingHistoryDirections.actionUserShoppingHistoryToReceiptDetailFragment(item as AllModels.Receipt))
+    private fun showAlertDialog() {
+        CustomAlertDialog(
+            this::clearAllReceipt,
+            null,
+            "Вы правда хотите очистить историю заказ?"
+        ).show(childFragmentManager, "TAG")
+    }
+
+    override fun itemClicked(item: AllModels?) {
+        findNavController().navigate(
+            UserShoppingHistoryDirections.actionUserShoppingHistoryToReceiptDetailFragment(
+                item as AllModels.Receipt
+            )
+        )
     }
 
     private fun clearAllReceipt() {

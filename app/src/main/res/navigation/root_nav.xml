@@ -12,10 +12,14 @@
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_registrationNumberFirebaseFragment"
-            app:destination="@id/registrationNumberFirebaseFragment" />
+            app:destination="@id/registrationNumberFirebaseFragment"
+            app:enterAnim="@anim/right_in"
+            app:popUpTo="@id/root_nav"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_bottomViewFragment3"
             app:destination="@id/bottomViewFragment3"
+            app:enterAnim="@anim/right_in"
             app:popUpTo="@id/root_nav"
             app:popUpToInclusive="true" />
     </fragment>
@@ -36,6 +40,7 @@
         <action
             android:id="@+id/action_receiveMessageFirebaseFragment_to_registrationBirthdayFragment"
             app:destination="@id/registrationBirthdayFragment"
+            app:enterAnim="@anim/right_in"
             app:popUpTo="@id/root_nav" />
         <argument
             android:name="phoneNumber"
@@ -49,6 +54,7 @@
         <action
             android:id="@+id/action_registrationBirthdayFragment_to_bottomViewFragment3"
             app:destination="@id/bottomViewFragment3"
+            app:enterAnim="@anim/right_in"
             app:popUpTo="@id/root_nav"
             app:popUpToInclusive="true" />
     </fragment>

@@ -20,6 +20,15 @@ fun String.logging() {
     Log.i("TAG", this)
 }
 
+fun View.notVisible(){
+    this.visibility = View.GONE
+}
+
+
+fun View.visible(){
+    this.visibility = View.VISIBLE
+}
+
 fun String.showSnackBar(view: View, duration: Int) {
     Snackbar.make(view, this, duration).show()
 }

@@ -6,11 +6,13 @@
     android:layout_height="230dp"
     android:layout_marginStart="13dp"
     android:layout_marginTop="10dp"
+    android:layout_marginBottom="@dimen/margin_10_dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
         android:layout_height="match_parent">
 
         <ImageView
@@ -48,6 +50,7 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/plus"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="13dp"
@@ -55,13 +58,17 @@
             app:backgroundTint="@color/main_purple_enable_color"
             app:fabSize="mini"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/minus"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="13dp"
+            android:src="@drawable/ic_baseline_remove_24"
+            app:tint="@color/white"
             android:visibility="gone"
             app:backgroundTint="@color/main_purple_enable_color"
             app:fabSize="mini"

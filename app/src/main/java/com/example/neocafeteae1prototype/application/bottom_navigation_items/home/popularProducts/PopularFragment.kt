@@ -1,13 +1,14 @@
-package com.example.neocafeteae1prototype.application.bottom_navigation_items.home.PopularProducts
+package com.example.neocafeteae1prototype.application.bottom_navigation_items.home.popularProducts
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.neocafeteae1prototype.R
 import com.example.neocafeteae1prototype.application.tools.BaseFragment
-import com.example.neocafeteae1prototype.application.tools.adapters.MainRecyclerAdapter
 import com.example.neocafeteae1prototype.application.tools.adapters.ProductRecyclerAdapter
 import com.example.neocafeteae1prototype.databinding.FragmentPopularBinding
 
@@ -23,13 +24,23 @@ class PopularFragment : BaseFragment<FragmentPopularBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerAdapter = ProductRecyclerAdapter()
+        recyclerAdapter = ProductRecyclerAdapter(null)
 
+        setUpToolbar()
+        setUpRecyclerView()
+    }
+
+    private fun setUpRecyclerView() {
         binding.recycler.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = recyclerAdapter
         }
-
         recyclerAdapter.setList(viewModel.list)
+    }
+
+    private fun setUpToolbar() {
+        binding.include.textView.text = resources.getText(R.string.popular)
+        binding.include.backButton.setOnClickListener { findNavController().navigateUp() }
+        binding.include.notification.setOnClickListener { findNavController().navigate(PopularFragmentDirections.actionPopularFragmentToNotification()) }
     }
 }

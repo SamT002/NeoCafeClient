@@ -6,22 +6,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.neocafeteae1prototype.application.bottom_navigation_items.SharedViewModel
 import com.example.neocafeteae1prototype.application.tools.BaseFragment
 import com.example.neocafeteae1prototype.application.tools.Consts
 import com.example.neocafeteae1prototype.application.tools.adapters.MainRecyclerAdapter
 import com.example.neocafeteae1prototype.application.tools.adapters.ProductRecyclerAdapter
+import com.example.neocafeteae1prototype.application.tools.delegates.RecyclerItemClickListener
+import com.example.neocafeteae1prototype.application.tools.delegates.SecondItemClickListener
 import com.example.neocafeteae1prototype.databinding.FragmentHomeBinding
+import com.example.neocafeteae1prototype.domain.sealedClasses.AllModels
 
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(), RecyclerItemClickListener,
+    SecondItemClickListener {
 
-    private val popularAdapter by lazy { ProductRecyclerAdapter() }
+    private val shareViewModel:SharedViewModel by activityViewModels()
+
+    private val popularAdapter by lazy { ProductRecyclerAdapter(this) }
     private val homeViewModel by lazy { ViewModelProvider(this).get(HomeViewModel::class.java) }
-    private val mainAdapter by lazy { MainRecyclerAdapter(null) }
+    private val mainAdapter by lazy { MainRecyclerAdapter(this) }
 
     override fun inflateView(inflater: LayoutInflater, container: ViewGroup?): FragmentHomeBinding {
         return FragmentHomeBinding.inflate(inflater)
@@ -31,7 +39,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclers()
         getDataFromSharedPreference()
+        setUpToolbar()
 
+        binding.all.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPopularFragment())
+        }
+    }
+
+    private fun setUpToolbar() {
+        binding.notificationIcon.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToNotification())
+        }
+        binding.searchIcon.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchFragment())
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -42,7 +63,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun setUpRecyclers() {
-
         binding.menuRecycler.apply {
             adapter = mainAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
@@ -52,18 +72,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.popularRecycler.apply {
             adapter = popularAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            popularAdapter.setList(homeViewModel.list)
         }
-
-        binding.notificationIcon.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToNotification())
-        }
-
-        binding.searchIcon.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchFragment())
-        }
+        shareViewModel.getList().observe(viewLifecycleOwner, {
+            popularAdapter.setList(it as MutableList<AllModels.Popular>)
+        })
 
 
+    }
+
+    override fun itemClicked(item: AllModels?) {
+        val category = item as AllModels.Menu
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToMenuFragment(
+                category.name
+            )
+        )
+    }
+
+    override fun holderClicked(model: AllModels) {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToProductFragment(
+                model as AllModels.Popular
+            )
+        )
     }
 
 

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.neocafeteae1prototype.R
@@ -26,24 +27,26 @@ import com.google.firebase.auth.PhoneAuthProvider
 import java.util.concurrent.TimeUnit
 
 
-class ReceiveMessageFirebaseFragment : BaseFragment<FragmentReceiveMessageFirebaseBinding>() {
+class ReceiveMessageFirebaseFragment : Fragment() {
 
     private var _binding: FragmentReceiveMessageFirebaseBinding? = null
-    private lateinit var phoneNumber: String
+    private lateinit var phoneNumber:String
     private var id: String = ""
     private val args: ReceiveMessageFirebaseFragmentArgs by navArgs()
     private lateinit var firebaseCallback: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
 
     @SuppressLint("SetTextI18n")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentReceiveMessageFirebaseBinding.inflate(inflater)
         phoneNumber = args.phoneNumber
+
         _binding!!.textView5.text = "Код был отправлен на номер $phoneNumber"
-
-        sendMessage()
-
-        listenOTR()
+        startTimer()
         firebaseCallback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(p0: PhoneAuthCredential) {
                 signIn(p0)
@@ -52,8 +55,8 @@ class ReceiveMessageFirebaseFragment : BaseFragment<FragmentReceiveMessageFireba
             override fun onVerificationFailed(p0: FirebaseException) {
                 _binding?.let {
                     p0.message?.showSnackBar(
-                            it.registrationButton,
-                            Snackbar.LENGTH_LONG
+                        it.registrationButton,
+                        Snackbar.LENGTH_LONG
                     )
                 }
                 Log.i("TAG", "OnFailed")
@@ -65,13 +68,18 @@ class ReceiveMessageFirebaseFragment : BaseFragment<FragmentReceiveMessageFireba
             }
         }
 
+        sendMessage()
+
+        listenOTR()
+
 
         _binding?.appCompatButton?.setOnClickListener {
             _binding!!.registrationButton.isEnabled = false
             _binding!!.registrationButton.background =
-                    ContextCompat.getDrawable(requireContext(), R.drawable.button_disable_custom_item)
+                ContextCompat.getDrawable(requireContext(), R.drawable.button_disable_custom_item)
         }
 
+        return _binding!!.root
     }
 
     private fun sendMessage() {
@@ -103,7 +111,6 @@ class ReceiveMessageFirebaseFragment : BaseFragment<FragmentReceiveMessageFireba
                 )
                 _binding?.appCompatButton?.isEnabled = true
                 signInWithCredential()
-                startTimer()
             }
         }
     }
@@ -146,10 +153,8 @@ class ReceiveMessageFirebaseFragment : BaseFragment<FragmentReceiveMessageFireba
 
     }
 
-    override fun inflateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-    ): FragmentReceiveMessageFirebaseBinding {
-        return FragmentReceiveMessageFirebaseBinding.inflate(inflater)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

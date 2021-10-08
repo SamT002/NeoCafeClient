@@ -13,7 +13,10 @@
         <action
             android:id="@+id/action_branchFragment_to_branchesDetailFragment"
             app:destination="@id/branchesDetailFragment"
-            app:enterAnim="@anim/fade_in" />
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_branchFragment_to_notification2"
             app:destination="@id/notification2" />
@@ -28,7 +31,8 @@
             app:argType="com.example.neocafeteae1prototype.domain.sealedClasses.AllModels$NeoCafePlace" />
         <action
             android:id="@+id/action_branchesDetailFragment_to_notification2"
-            app:destination="@id/notification2" />
+            app:destination="@id/notification2"
+            app:enterAnim="@anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/notification2"

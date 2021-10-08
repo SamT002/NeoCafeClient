@@ -14,8 +14,7 @@
         android:theme="@style/Theme.NeoCafeTeae1Prototype">
 
         <activity android:name=".application.root.MainActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/DemoTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

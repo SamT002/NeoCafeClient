@@ -13,5 +13,7 @@
     <dimen name="margin_30_dp">30dp</dimen>
     <dimen name="margin_6_dp">6dp</dimen>
     <dimen name="choose_gender_width">350dp</dimen>
+    <dimen name="alert_dialog_width">350dp</dimen>
     <dimen name="choose_gender_height">250dp</dimen>
+    <dimen name="alert_dialog_height">300dp</dimen>
 </resources>

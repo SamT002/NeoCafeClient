@@ -9,7 +9,8 @@ import com.example.neocafeteae1prototype.databinding.*
 import com.example.neocafeteae1prototype.domain.sealedClasses.AllModels
 import com.example.neocafeteae1prototype.domain.sealedClasses.AllViewHolders
 
-class MainRecyclerAdapter(val recyclerItemClick: RecyclerItemClickListener?) : RecyclerView.Adapter<AllViewHolders>() {
+class MainRecyclerAdapter(val recyclerItemClick: RecyclerItemClickListener?) :
+    RecyclerView.Adapter<AllViewHolders>() {
     private var items = listOf<AllModels>()
     fun setList(list: List<AllModels>) {
         items = list
@@ -31,32 +32,54 @@ class MainRecyclerAdapter(val recyclerItemClick: RecyclerItemClickListener?) : R
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllViewHolders {
         return when (viewType) {
-            R.layout.menu_item -> { AllViewHolders.MenuItemViewHolder(MenuItemBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false))
+            R.layout.menu_item -> {
+                AllViewHolders.MenuItemViewHolder(
+                    MenuItemBinding.inflate(
+                        LayoutInflater.from(parent.context), parent, false
+                    )
+                )
             }
-            R.layout.map_item -> AllViewHolders.NeoCafeViewHolder(MapItemBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false))
+            R.layout.map_item -> AllViewHolders.NeoCafeViewHolder(
+                MapItemBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
 
-            R.layout.branch_time_work_item -> AllViewHolders.BranchTimeWorkViewHolder(BranchTimeWorkItemBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false))
+            R.layout.branch_time_work_item -> AllViewHolders.BranchTimeWorkViewHolder(
+                BranchTimeWorkItemBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
 
-            R.layout.history_of_receipt_item -> AllViewHolders.ReceiptViewHolder(HistoryOfReceiptItemBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false))
+            R.layout.history_of_receipt_item -> AllViewHolders.ReceiptViewHolder(
+                HistoryOfReceiptItemBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
 
             R.layout.notification_item -> AllViewHolders.NotificationViewHolder(
-                    NotificationItemBinding.inflate(
-                            LayoutInflater.from(parent.context), parent, false))
+                NotificationItemBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
 
             R.layout.product_reciept_item -> AllViewHolders.ProductReceiptViewHolder(
-                    ProductRecieptItemBinding.inflate(
-                            LayoutInflater.from(parent.context), parent, false))
+                ProductRecieptItemBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
             else -> throw IllegalArgumentException("Invalid Type from adapter")
         }
     }
 
     override fun onBindViewHolder(holder: AllViewHolders, position: Int) {
         return when (holder) {
-            is AllViewHolders.MenuItemViewHolder -> holder.bind(items[position] as AllModels.Menu)
+            is AllViewHolders.MenuItemViewHolder -> {
+                holder.bind(items[position] as AllModels.Menu)
+                holder.itemView.setOnClickListener {
+                    recyclerItemClick?.itemClicked(items[position])
+                }
+            }
             is AllViewHolders.NeoCafeViewHolder -> {
                 holder.bind(items[position] as AllModels.NeoCafePlace)
                 holder.itemView.setOnClickListener {

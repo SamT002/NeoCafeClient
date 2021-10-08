@@ -28,6 +28,7 @@
                     android:id="@+id/userName"
                     style="@style/Toolbar_title_text"
                     android:textSize="28sp"
+                    android:layout_marginStart="@dimen/default_margin_start_16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -80,6 +81,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/all"
                     style="@style/TextView_16sp_Roboto"
                     android:layout_marginTop="36dp"
                     android:layout_marginEnd="22dp"
@@ -92,6 +94,7 @@
                     android:id="@+id/popular_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="260dp"
+                    android:layoutAnimation="@anim/right_layout_animation"
                     android:layout_marginTop="25dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -112,6 +115,7 @@
                     android:nestedScrollingEnabled="false"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
+                    android:layoutAnimation="@anim/layout_animation"
                     app:layout_constraintBottom_toTopOf="@id/invisible_text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

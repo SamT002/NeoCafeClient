@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_user" >
         <action
             android:id="@+id/action_userFragment_to_userShoppingHistory"
-            app:destination="@id/userShoppingHistory" />
+            app:destination="@id/userShoppingHistory"
+            app:enterAnim="@anim/right_in"
+            app:exitAnim="@anim/left_in"
+            app:popEnterAnim="@anim/right_in"
+            app:popExitAnim="@anim/left_in" />
         <action
             android:id="@+id/action_userFragment_to_notification5"
             app:destination="@id/notification5" />
@@ -24,7 +28,11 @@
         tools:layout="@layout/fragment_user_shopping_history" >
         <action
             android:id="@+id/action_userShoppingHistory_to_receiptDetailFragment"
-            app:destination="@id/receiptDetailFragment" />
+            app:destination="@id/receiptDetailFragment"
+            app:enterAnim="@anim/up_in"
+            app:exitAnim="@anim/down_in"
+            app:popEnterAnim="@anim/up_in"
+            app:popExitAnim="@anim/down_in" />
         <action
             android:id="@+id/action_userShoppingHistory_to_notification5"
             app:destination="@id/notification5" />

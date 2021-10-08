@@ -1,17 +1,20 @@
-package com.example.neocafeteae1prototype.application.bottom_navigation_items.home.HomeSearchFragment
+package com.example.neocafeteae1prototype.application.bottom_navigation_items.home.homeSearchFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.neocafeteae1prototype.application.tools.BaseFragment
-import com.example.neocafeteae1prototype.application.tools.adapters.MainRecyclerAdapter
 import com.example.neocafeteae1prototype.application.tools.adapters.ProductRecyclerAdapter
+import com.example.neocafeteae1prototype.application.tools.delegates.SecondItemClickListener
+import com.example.neocafeteae1prototype.application.tools.showToast
 import com.example.neocafeteae1prototype.databinding.FragmentSearchBinding
+import com.example.neocafeteae1prototype.domain.sealedClasses.AllModels
 
-class SearchFragment : BaseFragment<FragmentSearchBinding>() {
+class SearchFragment : BaseFragment<FragmentSearchBinding>(), SecondItemClickListener {
 
     private var recyclerAdapter: ProductRecyclerAdapter? = null
     private val viewModel by lazy { ViewModelProvider(this).get(SearchViewModel::class.java) }
@@ -26,7 +29,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerAdapter = ProductRecyclerAdapter()
+        binding.search.isFocusable = true
+        recyclerAdapter = ProductRecyclerAdapter(this)
         setUpRecycler()
 
     }
@@ -38,5 +42,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             adapter = recyclerAdapter
         }
         recyclerAdapter?.setList(viewModel.list)
+    }
+
+    override fun holderClicked(model: AllModels) {
+        "Hello".showToast(requireContext(), Toast.LENGTH_LONG)
     }
 }

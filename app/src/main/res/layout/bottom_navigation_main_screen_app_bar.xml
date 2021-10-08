@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/default_app_bar"
+    tools:showIn="@layout/fragment_user">
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        style="@style/Collapsing_Layout_Default"
+        app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/Toolbar_title_text"
+            android:layout_gravity="center"
+            android:text="@string/profile"
+            app:layout_collapseMode="parallax" />
+
+
+        <ImageView
+            android:id="@+id/notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_bell"
+            app:layout_collapseMode="parallax" />
+
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+</com.google.android.material.appbar.AppBarLayout>
