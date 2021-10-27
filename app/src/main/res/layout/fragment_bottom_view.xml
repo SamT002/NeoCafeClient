@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Constraint_Layout_Default"
-    tools:context=".application.root.BottomViewFragment">
+    tools:context=".view.root.BottomViewFragment">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/bottom_container_view"

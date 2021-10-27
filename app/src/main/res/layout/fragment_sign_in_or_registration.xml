@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.splash.SignInOrRegistrationFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/width_200_Dp"
+        android:layout_height="@dimen/margin_60_dp"
+        android:layout_marginTop="@dimen/width_200_Dp"
+        android:src="@drawable/neocafe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/registration_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/margin_77_dp"
+        android:layout_marginEnd="77dp"
+        android:text="@string/sign_in"
+        android:layout_marginTop="@dimen/margin_50_dp"
+        android:backgroundTint="@color/main_purple_enable_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sign_in"
+        style="@style/registration_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/margin_77_dp"
+        android:layout_marginEnd="77dp"
+        android:text="@string/sign_in"
+        android:layout_marginTop="@dimen/margin_50_dp"
+        android:backgroundTint="@color/main_purple_enable_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/register"
+        style="@style/registration_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/margin_77_dp"
+        android:layout_marginEnd="77dp"
+        android:text="@string/registration"
+        android:layout_marginTop="@dimen/margin_50_dp"
+        android:backgroundTint="#DADADA"
+        android:textColor="@color/white_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

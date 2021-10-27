@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/main_purple_enable_color"
     android:orientation="vertical"
-    tools:context=".application.bottom_navigation_items.shopping.ShoppingFragment">
+    tools:context=".view.bottom_navigation_items.shopping.ShoppingFragment">
 
     <include
         android:id="@+id/include"
@@ -73,28 +73,41 @@
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/appCompatButton2"
-                style="@style/registration_button"
-                android:layout_width="160dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/delivery"
+                android:layout_height="@dimen/margin_50_dp"
+                android:layout_width="@dimen/width_160_dp"
+                android:clickable="false"
                 android:layout_marginStart="@dimen/default_margin_start_16dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/disable_shopping"
-                android:text="@string/delivery"
-                android:textColor="@color/main_purple_enable_color"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/goToMenu" />
+                app:layout_constraintTop_toBottomOf="@+id/goToMenu">
 
-            <androidx.appcompat.widget.AppCompatButton
-                style="@style/registration_button"
-                android:layout_width="160dp"
-                android:layout_marginStart="@dimen/default_margin_start_16dp"
+                <TextView
+                    android:id="@+id/delivery_text"
+                    style="@style/TextView_18sp_Bold"
+                    android:text="@string/delivery"
+                    android:layout_gravity="center" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/in_shop"
+                android:layout_height="@dimen/margin_50_dp"
+                android:layout_width="@dimen/width_160_dp"
+                android:layout_marginEnd="@dimen/default_margin_start_16dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/button_enable_custom_style"
-                android:text="В заведении"
-                android:textColor="@color/white"
+                android:clickable="false"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/goToMenu" />
+                app:layout_constraintTop_toBottomOf="@+id/goToMenu" >
+
+                <TextView
+                    android:id="@+id/in_shop_text"
+                    style="@style/TextView_18sp_Bold"
+                    android:text="@string/in_shop"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/text_viwe"
@@ -105,7 +118,7 @@
                 android:text="@string/result"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatButton2" />
+                app:layout_constraintTop_toBottomOf="@+id/in_shop" />
 
             <TextView
                 android:id="@+id/result"
@@ -115,7 +128,7 @@
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/text_viwe"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatButton2" />
+                app:layout_constraintTop_toBottomOf="@+id/in_shop" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/order"

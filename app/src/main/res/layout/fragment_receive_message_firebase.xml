@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/register_background"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/default_nested_scroll_view"
-    tools:context=".application.registration.ReceiveMessageFirebaseFragment">
+    android:background="@drawable/register_background"
+    tools:context=".view.registration.ReceiveMessageFirebaseFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        style="@style/Constraint_Layout_Default">
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/Constraint_Layout_Default">
 
         <ImageView
-            android:id="@+id/back_button"
+            android:id="@+id/back_icon"
+            style="@style/toolbar_icon_image"
             android:src="@drawable/back_icon"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/toolbar_icon_image" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView4"
@@ -24,48 +22,48 @@
             android:text="@string/sms_code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/back_button" />
+            app:layout_constraintTop_toBottomOf="@+id/back_icon" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/phone_number"
             style="@style/TextView_16sp_Bold"
-            android:layout_marginTop="13dp"
+            android:layout_width="@dimen/width_200_Dp"
+            android:layout_marginTop="@dimen/margin_10_dp"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            />
+            app:layout_constraintStart_toStartOf="@+id/back_icon"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
             android:id="@+id/textView6"
             style="@style/TextView_16sp_Bold"
-            android:layout_marginTop="26dp"
-            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/margin_26_dp"
             android:text="@string/type_code"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/back_button"
-            app:layout_constraintTop_toBottomOf="@id/textView5" />
+            app:layout_constraintStart_toStartOf="@+id/back_icon"
+            app:layout_constraintTop_toBottomOf="@id/phone_number" />
 
         <in.aabhasjindal.otptextview.OtpTextView
             android:id="@+id/otpTextView"
-            android:focusable="false"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            app:bar_active_color="@color/green"
-            android:layout_marginTop="14dp"
+            android:layout_height="@dimen/margin_60_dp"
+            android:layout_marginTop="@dimen/margin_15_dp"
+            android:focusable="false"
             android:textColor="#383838"
+            app:bar_active_color="@color/green"
             app:bar_enabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView6"
             app:length="6"
             app:otp_box_background="@color/white"
-            app:otp_text_size="32sp" />
+            app:otp_text_size="@dimen/text_size_32_sp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/appCompatButton"
             style="@style/registration_button"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="@dimen/margin_26_dp"
             android:enabled="false"
             android:text="@string/Potverdit"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,10 +73,10 @@
         <TextView
             android:id="@+id/textView7"
             style="@style/TextView_14sp_Roboto"
-            android:layout_width="250dp"
-            android:textColor="@color/white"
-            android:layout_marginTop="30dp"
+            android:layout_width="@dimen/choose_alert_width"
+            android:layout_marginTop="@dimen/margin_30_dp"
             android:text="@string/if_message_null"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
@@ -86,12 +84,11 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registration_button"
             style="@style/registration_button"
+            android:layout_marginTop="@dimen/margin_18_dp"
             android:text="@string/send_again"
-            android:layout_marginTop="18dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

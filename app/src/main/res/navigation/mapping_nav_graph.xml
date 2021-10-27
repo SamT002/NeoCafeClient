@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/branchFragment"
-        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.branches.BranchFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.branches.BranchFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" >
         <action
@@ -23,12 +23,12 @@
     </fragment>
     <fragment
         android:id="@+id/branchesDetailFragment"
-        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.branches.BranchesDetailFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.branches.BranchesDetailFragment"
         android:label="fragment_branch"
         tools:layout="@layout/fragment_detail_branch" >
         <argument
             android:name="model"
-            app:argType="com.example.neocafeteae1prototype.domain.sealedClasses.AllModels$NeoCafePlace" />
+            app:argType="com.example.neocafeteae1prototype.data.models.AllModels$NeoCafePlace" />
         <action
             android:id="@+id/action_branchesDetailFragment_to_notification2"
             app:destination="@id/notification2"
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/notification2"
-        android:name="com.example.neocafeteae1prototype.application.notification.Notification"
+        android:name="com.example.neocafeteae1prototype.view.notification.Notification"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
 </navigation>

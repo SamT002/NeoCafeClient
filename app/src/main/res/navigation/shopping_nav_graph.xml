@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/shoppingFragment"
-        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.shopping.ShoppingFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.shopping.ShoppingFragment"
         android:label="fragment_shopping"
         tools:layout="@layout/fragment_shopping" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/notification3"
-        android:name="com.example.neocafeteae1prototype.application.notification.Notification"
+        android:name="com.example.neocafeteae1prototype.view.notification.Notification"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
 </navigation>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/default_vertical_layout"
     android:background="@color/main_purple_enable_color"
-    tools:context=".application.bottom_navigation_items.branches.BranchFragment">
+    tools:context=".view.bottom_navigation_items.branches.BranchFragment">
 
    <include
        android:id="@+id/include"

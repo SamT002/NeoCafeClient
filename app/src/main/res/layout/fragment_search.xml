@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".application.bottom_navigation_items.home.homeSearchFragment.SearchFragment">
+    tools:context=".view.bottom_navigation_items.home.home_search.SearchFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:id="@+id/search"
             style="@style/registration_edit_text"
             android:layout_width="match_parent"
-            android:focusable="true"
+            android:maxLines="1"
             android:inputType="text"
             android:textAlignment="center"/>
 

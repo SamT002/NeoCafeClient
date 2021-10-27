@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/register_background"
-    tools:context=".application.registration.RegistrationBirthdayFragment">
+    tools:context=".view.registration.RegistrationBirthdayFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout style="@style/Constraint_Layout_Default">
 
@@ -31,7 +31,7 @@
             app:layout_constraintTop_toBottomOf="@+id/skip" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/phone_number"
             android:layout_width="350dp"
             style="@style/TextView_16sp_Bold"
             android:layout_marginTop="@dimen/default_margin_start_16dp"
@@ -43,13 +43,13 @@
 
         <TextView
             android:id="@+id/textView6"
-            style="@style/TextView_16sp_Bold"
+            style="@style/TextView_16sp_Thin"
             android:layout_marginTop="26dp"
             android:textColor="@color/white"
             android:text="@string/type_birthday"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView5" />
+            app:layout_constraintTop_toBottomOf="@id/phone_number" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card"
@@ -65,6 +65,7 @@
                 android:id="@+id/edit_text"
                 style="@style/registration_edit_text"
                 android:hint="@string/birthday_example"
+                android:maxLength="10"
                 android:inputType="phone"
                 app:mask="##/##/####"
                 android:fontFamily="@font/roboto"/>

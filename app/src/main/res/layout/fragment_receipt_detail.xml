@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_purple_enable_color"
-    tools:context=".application.bottom_navigation_items.user.user_shopping_history.ReceiptDetailFragment">
+    tools:context=".view.bottom_navigation_items.user.user_shopping_history.ReceiptDetailFragment">
 
    <include
        android:id="@+id/include"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/main_purple_enable_color"
     android:orientation="vertical"
-    tools:context=".application.bottom_navigation_items.qr.QRcodeFragment">
+    tools:context=".view.bottom_navigation_items.qr.QRcodeFragment">
 
 
     <include

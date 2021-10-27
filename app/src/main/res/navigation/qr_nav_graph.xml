@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/QRcodeFragment"
-        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.qr.QRcodeFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.qr.QRcodeFragment"
         android:label="fragment_qrcode"
         tools:layout="@layout/fragment_qrcode" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/checkTableFragment"
-        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.qr.CheckTableFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.qr.CheckTableFragment"
         android:label="fragment_check_table"
         tools:layout="@layout/fragment_check_table" >
         <argument
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/notification4"
-        android:name="com.example.neocafeteae1prototype.application.notification.Notification"
+        android:name="com.example.neocafeteae1prototype.view.notification.Notification"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
 </navigation>

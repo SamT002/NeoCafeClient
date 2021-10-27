@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/button_enable_custom_style"
-    tools:context=".application.bottom_navigation_items.home.menu.MenuFragment">
+    tools:context=".view.bottom_navigation_items.home.menu.MenuFragment">
 
     <include
         android:id="@+id/include"

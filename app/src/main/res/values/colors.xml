@@ -17,4 +17,5 @@
     <color name="float_button_color">#A897BF</color>
     <color name="main_purple_enable_color">#7A68B7</color>
     <color name="main_purple_disabled_color">#797685</color>
+    <color name="thin_text_view_color">#787878</color>
 </resources>

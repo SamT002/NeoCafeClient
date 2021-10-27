@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.home.HomeFragment.HomeFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -40,17 +40,17 @@
     </fragment>
     <fragment
         android:id="@+id/notification"
-        android:name="com.example.neocafeteae1prototype.application.notification.Notification"
+        android:name="com.example.neocafeteae1prototype.view.notification.Notification"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.home.homeSearchFragment.SearchFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.home.home_search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     +<fragment
         android:id="@+id/menuFragment"
-        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.home.menu.MenuFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.home.menu.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -69,7 +69,7 @@
 </fragment>
     <fragment
         android:id="@+id/popularFragment"
-        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.home.popularProducts.PopularFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.home.popular_products.PopularFragment"
         android:label="fragment_popular"
         tools:layout="@layout/fragment_popular" >
         <action
@@ -78,11 +78,11 @@
     </fragment>
     <fragment
         android:id="@+id/productFragment"
-        android:name="com.example.neocafeteae1prototype.application.bottom_navigation_items.home.product.ProductFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.home.product.ProductFragment"
         android:label="fragment_product"
         tools:layout="@layout/fragment_product" >
         <argument
             android:name="model"
-            app:argType="com.example.neocafeteae1prototype.domain.sealedClasses.AllModels$Popular" />
+            app:argType="com.example.neocafeteae1prototype.data.models.AllModels$Popular" />
     </fragment>
 </navigation>

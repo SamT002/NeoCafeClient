@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/main_purple_enable_color"
-    tools:context=".application.bottom_navigation_items.home.HomeFragment.HomeFragment">
+    tools:context=".view.bottom_navigation_items.home.HomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
