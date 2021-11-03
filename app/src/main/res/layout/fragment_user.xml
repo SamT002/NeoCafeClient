@@ -20,6 +20,17 @@
             style="@style/Constraint_Layout_Default"
             android:background="@drawable/layout_top_rounded">
 
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_marginBottom="27dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/main_purple_enable_color"
+                app:layout_constraintBottom_toTopOf="@+id/exit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/user_name_text_view"
                 style="@style/Toolbar_title_text"
@@ -79,7 +90,7 @@
                         android:layout_height="85dp"
                         android:layout_marginEnd="30dp"
                         android:layout_marginBottom="15dp"
-                        android:src="@drawable/empty"
+                        android:src="@drawable/empty_image"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -193,27 +204,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/textView19"
-                style="@style/TextView_18sp_Thin"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="@dimen/margin_30_dp"
-                android:text="@string/neocafe_news"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/shopping_history" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="33dp"
-                android:paddingBottom="@dimen/margin_20_dp"
-                android:thumb="@drawable/switch_thumb"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView19"
-                app:layout_constraintTop_toBottomOf="@+id/shopping_history"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/exit"
                 style="@style/CardView_Default"
@@ -226,7 +216,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/switch_notification">
+                app:layout_constraintTop_toBottomOf="@id/shopping_history">
 
 
                     <TextView

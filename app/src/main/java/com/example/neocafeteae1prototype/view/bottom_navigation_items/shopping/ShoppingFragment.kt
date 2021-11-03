@@ -19,6 +19,9 @@ import com.example.neocafeteae1prototype.view.tools.alert_dialog.BonusAlertDialo
 import com.example.neocafeteae1prototype.view.tools.alert_dialog.CustomAlertDialog
 import com.example.neocafeteae1prototype.databinding.FragmentShoppingBinding
 import com.example.neocafeteae1prototype.data.models.AllModels
+import com.example.neocafeteae1prototype.view.tools.WrapContentLinearLayoutManager
+import com.example.neocafeteae1prototype.view.tools.cardActivate
+import com.example.neocafeteae1prototype.view.tools.cardNotActive
 import com.example.neocafeteae1prototype.view.tools.delegates.RecyclerItemClickListener
 import com.example.neocafeteae1prototype.view.tools.logging
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -58,41 +61,32 @@ class ShoppingFragment : BaseFragment<FragmentShoppingBinding>(), RecyclerItemCl
     // Слушатель 2 cardView (В заведении или нет) меняет их background (Клиент таким  образом узнает какой из них активный)
     private fun buttonListener() {
         if (inShop) {
-            cardActivate(binding.inShop, binding.inShopText)
-            cardNotActivate(binding.delivery, binding.deliveryText)
+            binding.inShop.cardActivate(binding.inShopText)
+            binding.delivery.cardNotActive(binding.deliveryText)
         } else {
-            cardActivate(binding.delivery, binding.deliveryText)
-            cardNotActivate(binding.inShop, binding.inShopText)
+            binding.delivery.cardActivate(binding.deliveryText)
+            binding.inShop.cardNotActive(binding.inShopText)
         }
-    }
-
-    private fun cardActivate(cardView: CardView, textView: TextView) {
-        cardView.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.main_purple_enable_color))
-        cardView.cardElevation = 10F
-        cardView.radius = 10F
-        textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-    }
-
-    private fun cardNotActivate(cardView: CardView, textView: TextView) {
-        cardView.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
-        cardView.cardElevation = 0F
-        cardView.radius = 0F
-        textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.main_purple_enable_color))
     }
 
     private fun setUpRecycler() {
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = WrapContentLinearLayoutManager(requireContext())
             adapter = recyclerAdapter
         }
-        getShoppingList()
+//        getShoppingList()
     }
-    private fun getShoppingList(){
-        sharedViewModel.getList().observe(viewLifecycleOwner,) {
-            sharedViewModel.sortProductForShopping(it as MutableList<AllModels.Popular>)
-        }
-        recyclerAdapter.setList(sharedViewModel.shoppingList)
-    }
+
+//    private fun getShoppingList(){ // Сортирует массив и берет данные у которых кол во больше 0
+//        sharedViewModel.getList().observe(viewLifecycleOwner) {
+//            sharedViewModel.sortProductForShopping(it as MutableList<AllModels.Popular>)
+//        }
+//        if (sharedViewModel.shoppingList.isEmpty()){ // ЕСли он пустой открывается окно что корзина пустая
+//            findNavController().navigate(ShoppingFragmentDirections.actionShoppingFragmentToEmptyIllustrativeFragment())
+//        }else {
+//            recyclerAdapter.setList(sharedViewModel.shoppingList)
+//        }
+//    }
 
     private fun setUpUi() {
         val bottomNavigationView = activity?.findViewById(R.id.bottomNavigationView) as BottomNavigationView
@@ -123,6 +117,6 @@ class ShoppingFragment : BaseFragment<FragmentShoppingBinding>(), RecyclerItemCl
     }
 
     override fun itemClicked(item: AllModels?) {
-        getShoppingList()
+//        getShoppingList()
     }
 }

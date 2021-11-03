@@ -89,6 +89,7 @@
             android:id="@+id/next_button"
             android:layout_marginTop="@dimen/margin_60_dp"
             android:text="@string/next"
+            android:enabled="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView2"
             style="@style/registration_button"

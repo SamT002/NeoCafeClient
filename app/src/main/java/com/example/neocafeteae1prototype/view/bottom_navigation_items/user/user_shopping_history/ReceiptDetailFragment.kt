@@ -35,7 +35,7 @@ class ReceiptDetailFragment : BaseFragment<FragmentReceiptDetailBinding>() {
 
     private fun setUpUi(receiptModel: AllModels.Receipt) {
         with(binding){
-            `when`.text = receiptModel.time
+            time.text = receiptModel.time
             address.text = receiptModel.street
             totalPrice.text = receiptModel.total
         }

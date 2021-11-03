@@ -1,14 +1,13 @@
 package com.example.neocafeteae1prototype.view.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.neocafeteae1prototype.databinding.PopularItemBinding
 import com.example.neocafeteae1prototype.data.models.AllModels
-import com.example.neocafeteae1prototype.view.tools.delegates.RecyclerItemClickListener
 import com.example.neocafeteae1prototype.view.tools.delegates.SecondItemClickListener
-import com.squareup.picasso.Picasso
+import com.example.neocafeteae1prototype.view.tools.loadWithGlide
 
 class ProductRecyclerAdapter(private val clicker: SecondItemClickListener?) :
     RecyclerView.Adapter<ProductRecyclerAdapter.ViewHolder>() {
@@ -17,6 +16,7 @@ class ProductRecyclerAdapter(private val clicker: SecondItemClickListener?) :
 
     fun setList(list: MutableList<AllModels.Popular>) {
         this.list = list
+        notifyDataSetChanged()
     }
 
     inner class ViewHolder(val binding: PopularItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -26,17 +26,21 @@ class ProductRecyclerAdapter(private val clicker: SecondItemClickListener?) :
         return ViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         with(list[position]) {
-            Picasso.with(binding.foodImage.context)
-                .load(image)
-                .into(binding.foodImage)
 
-            binding.foodName.text = name
-            binding.foodPrice.text = price
+            binding.foodImage.loadWithGlide(image)
 
-            if (county > 0) {
+            binding.foodName.text = title
+            binding.foodPrice.text = "$price c"
+
+            if (isPopular){
+
+            }
+
+            /*if (county > 0) {
                 binding.county.apply {
                     visibility = View.VISIBLE
                     text = county.toString()
@@ -54,7 +58,7 @@ class ProductRecyclerAdapter(private val clicker: SecondItemClickListener?) :
             binding.minus.setOnClickListener {
                 county -= 1
                 notifyItemChanged(position)
-            }
+            }*/
         }
 
         holder.itemView.setOnClickListener {

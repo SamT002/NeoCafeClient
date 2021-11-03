@@ -11,14 +11,13 @@
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
-            android:id="@+id/action_splashFragment_to_bottomViewFragment3"
-            app:destination="@id/bottomViewFragment3"
-            app:enterAnim="@anim/right_in"
+            android:id="@+id/action_splashFragment_to_signInOrRegistrationFragment"
+            app:destination="@id/signInOrRegistrationFragment"
             app:popUpTo="@id/root_nav"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_splashFragment_to_signInOrRegistrationFragment"
-            app:destination="@id/signInOrRegistrationFragment"
+            android:id="@+id/action_splashFragment_to_bottomViewFragment3"
+            app:destination="@id/bottomViewFragment3"
             app:popUpTo="@id/root_nav"
             app:popUpToInclusive="true" />
     </fragment>

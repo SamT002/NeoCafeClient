@@ -32,31 +32,32 @@ class ShoppingRecyclerAdapter(private val clicker: RecyclerItemClickListener?) :
                 .load(image)
                 .into(binding.foodImage)
 
-            binding.foodName.text = name
-            binding.foodPrice.text = price
+            binding.foodName.text = title
+            binding.foodPrice.text = price.toString()
 
-            if (county > 0) {
-                binding.county.apply {
-                    visibility = View.VISIBLE
-                    text = county.toString()
-                }
-                binding.minus.visibility = View.VISIBLE
-            } else {
-                binding.county.visibility = View.GONE
-                binding.minus.visibility = View.GONE
-            }
-
-            binding.plus.setOnClickListener {
-                county += 1
-                notifyItemChanged(position)
-            }
-            binding.minus.setOnClickListener {
-                county -= 1
-                notifyItemChanged(position)
-                if (county == 0){
-                    clicker?.itemClicked(list[position])
-                }
-            }
+//            if (county > 0) {
+//                binding.county.apply {
+//                    visibility = View.VISIBLE
+//                    text = county.toString()
+//                }
+//                binding.minus.visibility = View.VISIBLE
+//            } else {
+//                binding.county.visibility = View.GONE
+//                binding.minus.visibility = View.GONE
+//            }
+//
+//            binding.plus.setOnClickListener {
+//                county += 1
+//                notifyItemChanged(position)
+//            }
+//            binding.minus.setOnClickListener {
+//                county -= 1
+//                notifyItemChanged(position)
+//                if (county == 0){
+//                    list.removeAt(position)
+//                    notifyDataSetChanged()
+//                }
+//            }
         }
     }
 

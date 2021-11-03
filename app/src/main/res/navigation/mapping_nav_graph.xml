@@ -26,13 +26,16 @@
         android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.branches.BranchesDetailFragment"
         android:label="fragment_branch"
         tools:layout="@layout/fragment_detail_branch" >
-        <argument
-            android:name="model"
-            app:argType="com.example.neocafeteae1prototype.data.models.AllModels$NeoCafePlace" />
         <action
             android:id="@+id/action_branchesDetailFragment_to_notification2"
             app:destination="@id/notification2"
             app:enterAnim="@anim/fade_in" />
+        <argument
+            android:name="model"
+            app:argType="com.example.neocafeteae1prototype.data.models.AllModels$Filial" />
+        <argument
+            android:name="socailMedia"
+            app:argType="com.example.neocafeteae1prototype.data.models.AllModels$SocialMedia" />
     </fragment>
     <fragment
         android:id="@+id/notification2"

@@ -1,12 +1,13 @@
 package com.example.neocafeteae1prototype.view.adapters
 
+import android.annotation.SuppressLint
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.neocafeteae1prototype.R
 import com.example.neocafeteae1prototype.data.models.AllModels
 import com.example.neocafeteae1prototype.databinding.*
-import com.example.neocafeteae1prototype.view.tools.loadWithPicasso
+import com.example.neocafeteae1prototype.view.tools.loadWithGlide
 import com.example.neocafeteae1prototype.view.tools.setWhiteColor
 import com.squareup.picasso.Picasso
 
@@ -26,26 +27,26 @@ sealed class AllViewHolders(binding: ViewBinding) : RecyclerView.ViewHolder(bind
 
     class NeoCafeViewHolder(val binding: MapItemBinding) : AllViewHolders(binding){
 
-        fun bind(item: AllModels.NeoCafePlace){
+        @SuppressLint("SetTextI18n")
+        fun bind(item: AllModels.Filial){
+
             with(binding){
-                streetMap.text = item.street
-                timeWork.text = item.time
-                imageView3.loadWithPicasso(item.image)
+                streetMap.text = item.adress
+                timeWork.text = "${item.schedule[0].start} - ${item.schedule[0].end}"
+                imageView3.loadWithGlide(item.image)
             }
-
         }
-
     }
 
     class BranchTimeWorkViewHolder(val binding: BranchTimeWorkItemBinding) : AllViewHolders(binding){
 
-        fun bind(item: AllModels.BranchWorkTime){
+        fun bind(item: AllModels.Schedule){
             with(binding){
-                startWorkTime.text = item.startTime
-                endWorkTime.text = item.endTime
+                startWorkTime.text = item.start
+                endWorkTime.text = item.end
                 day.text = item.day
 
-                if (item.work) {
+                if (item.isToday) {
                     linearLayout.setBackgroundResource(R.drawable.layout_background_with_radius_enable)
                     startWorkTime.setWhiteColor(startWorkTime.context)
                     endWorkTime.setWhiteColor(endWorkTime.context)

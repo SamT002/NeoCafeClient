@@ -5,7 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".view.splash.SplashFragment">
 
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main_purple_enable_color"
+        android:indeterminate="true"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="40dp"
+        android:indeterminateTint="@color/main_purple_enable_color"/>
+
+
     <ImageView
+        android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/neocafe"

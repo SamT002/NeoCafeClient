@@ -1,5 +1,6 @@
 package com.example.neocafeteae1prototype.view.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.neocafeteae1prototype.databinding.PopularItemBinding
 import com.example.neocafeteae1prototype.data.models.AllModels
 import com.example.neocafeteae1prototype.view.tools.delegates.RecyclerItemClickListener
+import com.example.neocafeteae1prototype.view.tools.loadWithGlide
 import com.squareup.picasso.Picasso
 
 class MenuRecyclerAdapter(private val click:RecyclerItemClickListener) : RecyclerView.Adapter<MenuRecyclerAdapter.ViewHolder>() {
@@ -28,39 +30,38 @@ class MenuRecyclerAdapter(private val click:RecyclerItemClickListener) : Recycle
         return ViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         holder.itemView.setOnClickListener {
             click.itemClicked(list[position])
         }
         with(list[position]) {
-            if (category == filter || filter == "Все") {
-                Picasso.with(binding.foodImage.context)
-                    .load(image)
-                    .into(binding.foodImage)
+            if (category_name == filter || filter == "Все") {
+                binding.foodImage.loadWithGlide(image)
 
-                binding.foodName.text = name
-                binding.foodPrice.text = price
+                binding.foodName.text = title
+                binding.foodPrice.text = "$price c"
 
-                if (county > 0) {
-                    binding.county.apply {
-                        visibility = View.VISIBLE
-                        text = county.toString()
-                    }
-                    binding.minus.visibility = View.VISIBLE
-                } else {
-                    binding.county.visibility = View.GONE
-                    binding.minus.visibility = View.GONE
-                }
-
-                binding.plus.setOnClickListener {
-                    county += 1
-                    notifyItemChanged(position)
-                }
-                binding.minus.setOnClickListener {
-                    county -= 1
-                    notifyItemChanged(position)
-                }
+//                if (county > 0) {
+//                    binding.county.apply {
+//                        visibility = View.VISIBLE
+//                        text = county.toString()
+//                    }
+//                    binding.minus.visibility = View.VISIBLE
+//                } else {
+//                    binding.county.visibility = View.GONE
+//                    binding.minus.visibility = View.GONE
+//                }
+//
+//                binding.plus.setOnClickListener {
+//                    county += 1
+//                    notifyItemChanged(position)
+//                }
+//                binding.minus.setOnClickListener {
+//                    county -= 1
+//                    notifyItemChanged(position)
+//                }
             }
         }
 

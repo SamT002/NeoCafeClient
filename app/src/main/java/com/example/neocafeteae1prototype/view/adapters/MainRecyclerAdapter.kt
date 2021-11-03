@@ -21,12 +21,12 @@ class MainRecyclerAdapter(private val recyclerItemClick: RecyclerItemClickListen
     override fun getItemViewType(position: Int): Int {
         return when (items[position]) {
             is AllModels.Popular -> super.getItemViewType(position)
-            is AllModels.NeoCafePlace -> R.layout.map_item
-            is AllModels.BranchWorkTime -> R.layout.branch_time_work_item
             is AllModels.Product -> R.layout.product_reciept_item
             is AllModels.Receipt -> R.layout.history_of_receipt_item
             is AllModels.Notification -> R.layout.notification_item
             is AllModels.Menu -> R.layout.menu_item
+            is AllModels.Filial -> R.layout.map_item
+            is AllModels.Schedule -> R.layout.branch_time_work_item
         }
     }
 
@@ -81,12 +81,12 @@ class MainRecyclerAdapter(private val recyclerItemClick: RecyclerItemClickListen
                 }
             }
             is AllViewHolders.NeoCafeViewHolder -> {
-                holder.bind(items[position] as AllModels.NeoCafePlace)
+                holder.bind(items[position] as AllModels.Filial)
                 holder.itemView.setOnClickListener {
                     recyclerItemClick?.itemClicked(items[position])
                 }
             }
-            is AllViewHolders.BranchTimeWorkViewHolder -> holder.bind(items[position] as AllModels.BranchWorkTime)
+            is AllViewHolders.BranchTimeWorkViewHolder -> holder.bind(items[position] as AllModels.Schedule)
             is AllViewHolders.ReceiptViewHolder -> {
                 holder.bind(items[position] as AllModels.Receipt)
                 holder.itemView.setOnClickListener {

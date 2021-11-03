@@ -9,10 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.neocafeteae1prototype.databinding.FragmentProductBinding
 import com.example.neocafeteae1prototype.view.root.BaseFragment
-import com.example.neocafeteae1prototype.view.tools.logging
-import com.example.neocafeteae1prototype.view.tools.notVisible
-import com.example.neocafeteae1prototype.view.tools.visible
-import com.squareup.picasso.Picasso
+import com.example.neocafeteae1prototype.view.tools.*
 
 class ProductFragment : BaseFragment<FragmentProductBinding>() {
 
@@ -22,8 +19,8 @@ class ProductFragment : BaseFragment<FragmentProductBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpUI()
-        changeVisibility(args.model.county)
-        binding.quantity.text = args.model.county.toString()
+//        changeVisibility(args.model.county)
+//        binding.quantity.text = args.model.county.toString()
 
     }
 
@@ -49,15 +46,14 @@ class ProductFragment : BaseFragment<FragmentProductBinding>() {
         binding.close.setOnClickListener { findNavController().navigateUp() }
 
         with(args.model) {
-            Picasso.with(requireContext())
-                .load(image)
-                .into(binding.productImage)
 
-            binding.productName.text = name
-            binding.productPrice.text = price
-            binding.description.text = "Description"
+            binding.productImage.loadWithGlide(image)
 
-            binding.add.setOnClickListener {
+            binding.productName.text = title
+            binding.productPrice.text = price.toString()
+            binding.description.text = description
+
+          /*  binding.add.setOnClickListener {
                 if (county == 0){
                     county++
                     binding.quantity.text = county.toString()
@@ -75,7 +71,7 @@ class ProductFragment : BaseFragment<FragmentProductBinding>() {
                 if (county == 0){
                     changeVisibility(county)
                 }
-            }
+            }*/
             binding.addElement.setOnClickListener {
                 findNavController().navigateUp()
             }

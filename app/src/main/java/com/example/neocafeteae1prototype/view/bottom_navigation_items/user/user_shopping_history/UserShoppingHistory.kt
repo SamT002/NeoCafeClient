@@ -1,7 +1,6 @@
 package com.example.neocafeteae1prototype.view.bottom_navigation_items.user.user_shopping_history
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,7 @@ import com.example.neocafeteae1prototype.view.tools.delegates.RecyclerItemClickL
 import com.example.neocafeteae1prototype.databinding.FragmentUserShoppingHistoryBinding
 import com.example.neocafeteae1prototype.data.models.AllModels
 import com.example.neocafeteae1prototype.view_model.user_shopping_history_vm.UserShoppingViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +28,11 @@ class UserShoppingHistory : BaseFragment<FragmentUserShoppingHistoryBinding>(), 
         super.onViewCreated(view, savedInstanceState)
         setUpRecycler()
 
-        binding.clearReceipt.setOnClickListener { showAlertDialog() }
+        val bottomNavigationView = activity?.findViewById(R.id.bottomNavigationView) as BottomNavigationView
+        with(binding){
+            clearReceipt.setOnClickListener { showAlertDialog() }
+            bottomNavigationView.setOnClickListener{bottomNavigationView.selectedItemId = R.id.home_nav_graph}
+        }
     }
 
     private fun setUpRecycler() {
@@ -36,7 +40,11 @@ class UserShoppingHistory : BaseFragment<FragmentUserShoppingHistoryBinding>(), 
             adapter = recyclerAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
-        recyclerAdapter.setList(viewModel.list)
+        if (viewModel.list.isEmpty()){
+            updateVisibility(View.GONE, View.VISIBLE)
+        }else{
+            recyclerAdapter.setList(viewModel.list)
+        }
     }
 
 
@@ -50,7 +58,19 @@ class UserShoppingHistory : BaseFragment<FragmentUserShoppingHistoryBinding>(), 
     }
 
     private fun clearAllReceipt() {
-        Log.i("TAG", "clearAllReceipt")
+        viewModel.list.clear()
+        updateVisibility(View.VISIBLE, View.GONE)
+    }
+
+    private fun updateVisibility(isEmptyViewsVisibility: Int, defaultViewsVisibility:Int){
+        with(binding){
+            imageView2.visibility = isEmptyViewsVisibility
+            textView5.visibility = isEmptyViewsVisibility
+            goToMenuButton.visibility = isEmptyViewsVisibility
+
+            recyclerView.visibility = defaultViewsVisibility
+            clearReceipt.visibility = defaultViewsVisibility
+        }
     }
 
     override fun setUpToolbar() {

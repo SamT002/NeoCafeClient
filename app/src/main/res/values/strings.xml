@@ -34,7 +34,6 @@
     <string name="result_bonus">Вы накопили</string>
     <string name="bonus">бонусов</string>
     <string name="history">История заказов</string>
-    <string name="neocafe_news">Получать новости от neocafe ?</string>
     <string name="clear">Очистить</string>
     <string name="result">Итого:</string>
     <string name="notification">Уведомление</string>
@@ -55,4 +54,6 @@
     <string name="exit">Выход</string>
     <string name="kg_number_code">+996</string>
     <string name="in_shop">В заведении</string>
+    <string name="empty">Ой пусто!</string>
+    <string name="go_to_menu">Перейти в меню</string>
 </resources>

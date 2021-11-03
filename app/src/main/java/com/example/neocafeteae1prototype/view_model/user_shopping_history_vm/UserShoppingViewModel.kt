@@ -19,7 +19,7 @@ class UserShoppingViewModel @Inject constructor() : ViewModel() {
             AllModels.Product("Coffee", "120 c", "3", "360"),
     )
 
-    val list = listOf<AllModels.Receipt>(
+    val list = mutableListOf<AllModels.Receipt>(
             AllModels.Receipt(listProduct , false, "Tuesday", "Kulatov st", "500"),
             AllModels.Receipt(listProduct, true, "Monday", "Kulatov st", "500"),
             AllModels.Receipt(listProduct, true, "Friday", "Soviet", "500"),

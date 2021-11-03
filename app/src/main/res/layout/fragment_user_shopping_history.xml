@@ -19,6 +19,42 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout style="@style/Constraint_Layout_Default">
 
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/imageView2"
+                android:layout_width="320dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="@dimen/margin_20_dp"
+                android:src="@drawable/empty_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:visibility="gone"
+                style="@style/TextView_Main_Names"
+                android:layout_marginTop="18dp"
+                android:text="@string/empty"
+                android:textColor="@color/main_purple_enable_color"
+                android:textSize="36sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:visibility="gone"
+                android:id="@+id/go_to_menu_button"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/margin_50_dp"
+                android:layout_marginTop="@dimen/margin_10_dp"
+                android:background="@drawable/button_enable_custom_style"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/go_to_menu"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
             <TextView
                 android:id="@+id/clear_receipt"
                 style="@style/TextView_14sp_Roboto"

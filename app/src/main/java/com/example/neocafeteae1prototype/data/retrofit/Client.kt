@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -31,8 +32,28 @@ object Client {
     }
 
     @Provides
+    fun getBranchesApi(retrofit:Retrofit):BranchAPI{
+        return retrofit.create(BranchAPI::class.java)
+    }
+
+    @Provides
     fun getRegistrationApi(retrofit: Retrofit):RestApiRegistration{
         return retrofit.create(RestApiRegistration::class.java)
+    }
+
+    @Provides
+    fun getUserApi(retrofit: Retrofit):UserAPI{
+        return retrofit.create(UserAPI::class.java)
+    }
+
+    @Provides
+    fun getQR_API(retrofit:Retrofit):QR_API{
+        return retrofit.create(QR_API::class.java)
+    }
+
+    @Provides
+    fun getShoppingAPI(retrofit: Retrofit):ShoppingAPI{
+        return retrofit.create(ShoppingAPI::class.java)
     }
 
 

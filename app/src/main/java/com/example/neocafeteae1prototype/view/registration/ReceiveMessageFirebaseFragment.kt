@@ -40,6 +40,7 @@ class ReceiveMessageFirebaseFragment : Fragment() {
 
         _binding?.registrationButton?.setOnClickListener {
             sendMessage()
+            startTimer()
         }
 
         _binding!!.phoneNumber.text = "Код был отправлен на номер $phoneNumber"
@@ -120,6 +121,7 @@ class ReceiveMessageFirebaseFragment : Fragment() {
         object : CountDownTimer(30000, 1000) {
             @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
+                _binding?.registrationButton?.isEnabled = false
                 _binding?.registrationButton?.text =
                     "Отправить повторно ${millisUntilFinished / 1000}"
             }

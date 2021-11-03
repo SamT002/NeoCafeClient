@@ -18,6 +18,8 @@
     <dimen name="margin_6_dp">6dp</dimen>
     <dimen name="choose_alert_width">300dp</dimen>
     <dimen name="alert_dialog_width">350dp</dimen>
+    <dimen name="done_alert_dialog_width">250dp</dimen>
+    <dimen name="done_alert_dialog_height">150dp</dimen>
     <dimen name="choose_gender_height">250dp</dimen>
     <dimen name="alert_dialog_height">300dp</dimen>
     <dimen name="margin_156_dp">156dp</dimen>

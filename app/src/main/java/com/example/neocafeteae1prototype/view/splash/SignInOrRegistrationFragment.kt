@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.neocafeteae1prototype.data.internet_checker.ConnectionLiveData
 import com.example.neocafeteae1prototype.databinding.FragmentSignInOrRegistrationBinding
 import com.example.neocafeteae1prototype.view.root.BaseFragment
 import com.example.neocafeteae1prototype.view.tools.logging
 
 
 class SignInOrRegistrationFragment : BaseFragment<FragmentSignInOrRegistrationBinding>() {
+
+    private lateinit var connectionLiveData: ConnectionLiveData
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

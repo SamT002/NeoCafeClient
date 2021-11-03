@@ -5,17 +5,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.neocafeteae1prototype.R
 import com.example.neocafeteae1prototype.data.Consts
 import com.example.neocafeteae1prototype.databinding.FragmentAuthWithNumberBinding
 import com.example.neocafeteae1prototype.view.root.BaseFragment
 import com.example.neocafeteae1prototype.view.tools.logging
+import com.example.neocafeteae1prototype.view.tools.showToast
+import com.example.neocafeteae1prototype.view_model.regisration_vm.RegistrationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AuthWithNumberFragment : BaseFragment<FragmentAuthWithNumberBinding>() {
+
+    private val viewModel by activityViewModels<RegistrationViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,8 +53,15 @@ class AuthWithNumberFragment : BaseFragment<FragmentAuthWithNumberBinding>() {
 
     private fun sendMessage() {
         val phoneNumber = binding.numberPhoneTextView.text.toString()
-        insertDataToSharedPreference("+996${phoneNumber}")
-        findNavController().navigate(AuthWithNumberFragmentDirections.actionAuthWithNumberFragmentToGetMessageAuthorization("+996${phoneNumber}"))
+        viewModel.checkNumber(phoneNumber.toInt())
+        viewModel.isNumberLocateInDB.observe(viewLifecycleOwner){
+            if (it){
+                insertDataToSharedPreference(phoneNumber)
+                findNavController().navigate(AuthWithNumberFragmentDirections.actionAuthWithNumberFragmentToGetMessageAuthorization("+996${phoneNumber}"))
+            }else{
+                "Пожалуйста, проверьте ваш номер".showToast(requireContext(), Toast.LENGTH_LONG)
+            }
+        }
     }
 
     private fun insertDataToSharedPreference(number: String) {

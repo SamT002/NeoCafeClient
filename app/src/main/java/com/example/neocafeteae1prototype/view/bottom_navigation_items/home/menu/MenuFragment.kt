@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.neocafeteae1prototype.R
 import com.example.neocafeteae1prototype.data.models.AllModels
+import com.example.neocafeteae1prototype.data.models.Resource
 import com.example.neocafeteae1prototype.databinding.FragmentMenuBinding
 import com.example.neocafeteae1prototype.view.adapters.MenuRecyclerAdapter
 import com.example.neocafeteae1prototype.view.root.BaseFragment
@@ -58,9 +59,13 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>(), RecyclerItemClickListe
             R.id.all -> "Все"
             else -> ""
         }
-        sharedViewModel.getList().observe(viewLifecycleOwner, {
-            val sorted = sharedViewModel.sort(checkedText, it as MutableList<AllModels.Popular>)
-            recyclerAdapter.setList(sorted, checkedText)
+        sharedViewModel.list.observe(viewLifecycleOwner, {
+            when (it){
+                is Resource.Success -> {
+                    val sorted = sharedViewModel.sort(checkedText, it.value.products)
+                    recyclerAdapter.setList(sorted, checkedText)
+                }
+            }
         })
     }
 

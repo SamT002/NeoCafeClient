@@ -13,10 +13,22 @@
         <action
             android:id="@+id/action_shoppingFragment_to_notification3"
             app:destination="@id/notification3" />
+        <action
+            android:id="@+id/action_shoppingFragment_to_emptyIllustrativeFragment"
+            app:destination="@id/emptyIllustrativeFragment" />
     </fragment>
     <fragment
         android:id="@+id/notification3"
         android:name="com.example.neocafeteae1prototype.view.notification.Notification"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/emptyIllustrativeFragment"
+        android:name="com.example.neocafeteae1prototype.view.bottom_navigation_items.shopping.EmptyIllustrativeFragment"
+        android:label="fragment_empty_illustrative"
+        tools:layout="@layout/fragment_empty_illustrative" >
+        <action
+            android:id="@+id/action_emptyIllustrativeFragment_to_notification3"
+            app:destination="@id/notification3" />
+    </fragment>
 </navigation>

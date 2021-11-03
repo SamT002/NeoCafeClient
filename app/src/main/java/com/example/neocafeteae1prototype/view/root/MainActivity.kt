@@ -24,12 +24,9 @@ class MainActivity : AppCompatActivity() {
         connectionLiveData = ConnectionLiveData(this) // Слушаетель интернета
 
         val snackbar = Snackbar.make(binding.view, "No Internet", Snackbar.LENGTH_INDEFINITE).apply {
-                setAction("Закрыть") {
-                    this.dismiss()
-                    setActionTextColor(ContextCompat.getColor(this@MainActivity, R.color.white))
-                    setBackgroundTint(ContextCompat.getColor(this@MainActivity, R.color.red))
-                }
+                setBackgroundTint(ContextCompat.getColor(this@MainActivity, R.color.red))
             }
+
         connectionLiveData.observe(this, { // если есть инет оно удаляет Snackba
             if (it == false) snackbar.show()
             else snackbar.dismiss()

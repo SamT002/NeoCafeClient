@@ -11,4 +11,6 @@ object Consts {
     const val SHARED_PREFERENCES = "APPLICATION"
     const val WHITE = "#FFFFFFFF"
     const val ENABLE_COLOR = "#7A68B7"
+    const val ACCESS = "Access token"
+    const val REFRESH = "Refresh token"
 }

@@ -6,8 +6,12 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.neocafeteae1prototype.R
+import com.example.neocafeteae1prototype.data.Consts
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
@@ -19,6 +23,15 @@ fun String.showToast(context: Context, duration: Int) {
 fun String.logging() {
     Log.i("TAG", this)
 }
+
+fun String.mainLogging() {
+    Log.i("Main", this)
+}
+
+fun String.bearerToken(): String {
+    return "Bearer $this"
+}
+
 
 fun View.notVisible(){
     this.visibility = View.GONE
@@ -38,10 +51,12 @@ infix fun TextView.text(text: String) {
     this.text = text
 }
 
-fun ImageView.loadWithPicasso(image: String) {
-    Picasso.with(this.context)
-        .load(image)
+fun ImageView.loadWithGlide(image: String) {
+    Glide.with(this.context)
+        .load("https://neocafe1.herokuapp.com$image")
+        .timeout(5000)
         .placeholder(R.drawable.progress_animation)
+        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
         .into(this)
 
 }
@@ -49,6 +64,20 @@ fun ImageView.loadWithPicasso(image: String) {
 
 fun TextView.setWhiteColor(context: Context) {
     this.setTextColor(ContextCompat.getColor(context, R.color.white))
+}
+
+fun CardView.cardActivate(textView: TextView){
+    this.setCardBackgroundColor(ContextCompat.getColor(this.context, R.color.main_purple_enable_color))
+    this.cardElevation = 10F
+    this.radius = 10F
+    textView.setTextColor(ContextCompat.getColor(this.context, R.color.white))
+}
+
+fun CardView.cardNotActive(textView:TextView){
+    this.setCardBackgroundColor(ContextCompat.getColor(this.context, R.color.white))
+    this.cardElevation = 0F
+    this.radius = 0F
+    textView.setTextColor(ContextCompat.getColor(this.context, R.color.main_purple_enable_color))
 }
 
 

@@ -39,7 +39,7 @@
         android:id="@+id/negative_button"
         style="@style/TextView_16sp_Bold"
         android:layout_marginTop="@dimen/margin_30_dp"
-        android:layout_margin="@dimen/margin_20_dp"
+        android:layout_marginStart="@dimen/margin_50_dp"
         android:background="@drawable/custom_button_positive"
         android:text="НЕТ"
         android:textColor="@color/main_purple_enable_color"
@@ -50,7 +50,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/positive_button"
         style="@style/TextView_16sp_Bold"
-        android:layout_margin="@dimen/margin_20_dp"
+        android:layout_marginEnd="@dimen/margin_50_dp"
         android:layout_marginTop="@dimen/margin_30_dp"
         android:background="@drawable/custom_button_negative"
         android:text="ДА"

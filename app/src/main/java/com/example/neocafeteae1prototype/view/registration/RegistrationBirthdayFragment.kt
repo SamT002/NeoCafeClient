@@ -1,5 +1,6 @@
 package com.example.neocafeteae1prototype.view.registration
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -17,11 +18,13 @@ import com.example.neocafeteae1prototype.databinding.FragmentRegistrationBirthda
 import com.example.neocafeteae1prototype.view.root.BaseFragment
 import com.example.neocafeteae1prototype.view.tools.logging
 import com.example.neocafeteae1prototype.view.tools.showToast
+import com.example.neocafeteae1prototype.view.tools.visible
 import com.example.neocafeteae1prototype.view_model.regisration_vm.RegistrationViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.vicmikhailau.maskededittext.MaskedFormatter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RegistrationBirthdayFragment : BaseFragment<FragmentRegistrationBirthdayBinding>() {
     private val viewModel by activityViewModels<RegistrationViewModel>()
     private lateinit var birthdayDate: String
@@ -31,7 +34,7 @@ class RegistrationBirthdayFragment : BaseFragment<FragmentRegistrationBirthdayBi
         super.onViewCreated(view, savedInstanceState)
         sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
         with(binding){
-            skip.setOnClickListener { sendUserData() }
+//            skip.setOnClickListener { sendUserData() }
             signIn.setOnClickListener {
                 val formatter = MaskedFormatter("###-###-###").formatString(binding.editText.text.toString())?.unMaskedString
                 insertDataToSharedPreference(formatter!!)
@@ -73,16 +76,25 @@ class RegistrationBirthdayFragment : BaseFragment<FragmentRegistrationBirthdayBi
         val uid = FirebaseAuth.getInstance().uid
         val birthday = binding.editText.text.toString() ?: "null"
 
-        viewModel.sendUserData(55555557, uid!!, name!!, birthday)
-        if(viewModel.userCreated){
-            nextPage()
-        }else{
-            "Такой юзер существует".showToast(requireContext(), Toast.LENGTH_LONG)
+        binding.progress.visible()
+        viewModel.sendUserData( number!!.toInt(), uid!!, name!!, birthday)
+
+        viewModel.userCreated.observe(viewLifecycleOwner){
+           if (it){
+               getToken(uid, number)
+               findNavController().navigate(RegistrationBirthdayFragmentDirections.actionRegistrationBirthdayFragmentToBottomViewFragment3())
+           }else "Такой юзер существует".showToast(requireContext(), Toast.LENGTH_LONG)
         }
     }
 
-    private fun nextPage() {
-        findNavController().navigate(RegistrationBirthdayFragmentDirections.actionRegistrationBirthdayFragmentToBottomViewFragment3())
+    @SuppressLint("CommitPrefEdits")
+    private fun getToken(uid: String, number: Int) {
+        viewModel.JWTtoken(number, uid)
+        with(sharedPref.edit()){
+            putString(Consts.ACCESS, viewModel.tokens.access)
+            putString(Consts.REFRESH, viewModel.tokens.refresh)
+        }
+
     }
 
     override fun setUpToolbar() {

@@ -12,12 +12,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.neocafeteae1prototype.data.Consts
 import com.example.neocafeteae1prototype.data.models.AllModels
+import com.example.neocafeteae1prototype.data.models.Resource
 import com.example.neocafeteae1prototype.databinding.FragmentHomeBinding
 import com.example.neocafeteae1prototype.view.adapters.MainRecyclerAdapter
 import com.example.neocafeteae1prototype.view.adapters.ProductRecyclerAdapter
 import com.example.neocafeteae1prototype.view.root.BaseFragment
 import com.example.neocafeteae1prototype.view.tools.delegates.RecyclerItemClickListener
 import com.example.neocafeteae1prototype.view.tools.delegates.SecondItemClickListener
+import com.example.neocafeteae1prototype.view.tools.notVisible
+import com.example.neocafeteae1prototype.view.tools.visible
 import com.example.neocafeteae1prototype.view_model.menu_shopping_vm.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -72,28 +75,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), RecyclerItemClickListe
             adapter = popularAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
-        shareViewModel.getList().observe(viewLifecycleOwner, {
-            popularAdapter.setList(it as MutableList<AllModels.Popular>)
-        })
-
-
+        shareViewModel.list.observe(viewLifecycleOwner){
+            when (it){
+                is Resource.Success -> {
+                    popularAdapter.setList(it.value.products)
+                    binding.progress.notVisible()
+                }
+                Resource.Loading -> binding.progress.visible()
+            }
+        }
     }
 
     override fun itemClicked(item: AllModels?) {
         val category = item as AllModels.Menu
-        findNavController().navigate(
-            HomeFragmentDirections.actionHomeFragmentToMenuFragment(
-                category.name
-            )
-        )
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMenuFragment(category.name))
     }
 
     override fun holderClicked(model: AllModels) {
-        findNavController().navigate(
-            HomeFragmentDirections.actionHomeFragmentToProductFragment(
-                model as AllModels.Popular
-            )
-        )
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment(model as AllModels.Popular))
     }
 
 

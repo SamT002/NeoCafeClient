@@ -15,7 +15,6 @@ import com.example.neocafeteae1prototype.databinding.FragmentDetailBranchBinding
 import com.example.neocafeteae1prototype.view.adapters.MainRecyclerAdapter
 import com.example.neocafeteae1prototype.view.root.BaseFragment
 import com.example.neocafeteae1prototype.view.tools.alert_dialog.CustomAlertDialog
-import com.example.neocafeteae1prototype.view.tools.loadWithPicasso
 
 class BranchesDetailFragment : BaseFragment<FragmentDetailBranchBinding>() {
 
@@ -25,7 +24,7 @@ class BranchesDetailFragment : BaseFragment<FragmentDetailBranchBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setData(args.model)
+        setData(args.model, args.socailMedia)
         setUpToolbar()
     }
 
@@ -40,35 +39,35 @@ class BranchesDetailFragment : BaseFragment<FragmentDetailBranchBinding>() {
         }
     }
 
-    private fun setData(param1: AllModels.NeoCafePlace?) {
+    private fun setData(param1: AllModels.Filial, socialMedia: AllModels.SocialMedia) {
         with(binding) {
-            if (param1 != null) {
-                binding.branchImage.loadWithPicasso(param1.image)
-            }
-            branchInfo.text = param1?.branchInfo
+//            if (param1 != null) {
+//                binding.branchImage.loadWithPicasso(param1.image)
+//            }
+            branchInfo.text = param1.description
 
             instagram.setOnClickListener {
-                param1?.instagramLink?.let { it -> runLink(it) }
+                runLink(socialMedia.instagram)
             }
 
             facebook.setOnClickListener {
-                param1?.facebookLink?.let { it -> runLink(it) }
+                runLink(socialMedia.facebook)
             }
             onTheMap.setOnClickListener {
-                param1?.gis?.let { it1 -> run2Gis(it1) }
+                run2Gis(param1?.link2Gis)
             }
 
             recyclerTime.apply {
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 adapter = recyclerAdapter
             }
-            recyclerAdapter.setList(param1!!.list)
+            recyclerAdapter.setList(param1.schedule)
 
             call.setOnClickListener {
-                intent = Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:${param1?.numberPhone}"))
+                intent = Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:${param1.phone}"))
                 startActivity(intent)
             }
-            addressOfBranch.text = param1.street
+            addressOfBranch.text = param1.adress
         }
     }
 
