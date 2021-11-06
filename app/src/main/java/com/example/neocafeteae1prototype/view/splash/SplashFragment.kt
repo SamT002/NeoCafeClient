@@ -44,14 +44,15 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         connectionLiveData.observe(viewLifecycleOwner){
             getToken()
         }
+
     }
 
     @SuppressLint("CommitPrefEdits")
     private fun getToken() {
         val uid = FirebaseAuth.getInstance().uid
-//        val number = sharedPref.getString(Consts.USER_NUMBER, "0")?.toInt()
+        val number = sharedPref.getString(Consts.USER_NUMBER, "0")?.toInt()
 
-        viewModel.JWTtoken(777888999, "4477")
+        viewModel.JWTtoken(number!!, uid!!)
         viewModel.list.observe(viewLifecycleOwner){
             if (it.access.isNotEmpty()){
                 binding.progress.notVisible()
@@ -59,7 +60,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                     putString(Consts.ACCESS, it.access)
                     putString(Consts.REFRESH, it.refresh)
                 }.apply()
-                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToBottomViewFragment3())
+                findNavController().navigate(R.id.action_splashFragment_to_bottomViewFragment3)
             }
         }
     }
