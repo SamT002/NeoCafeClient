@@ -14,6 +14,7 @@ import com.example.neocafeteae1prototype.data.local.LocalDatabase
 import com.example.neocafeteae1prototype.databinding.FragmentAuthWithNumberBinding
 import com.example.neocafeteae1prototype.view.root.BaseFragment
 import com.example.neocafeteae1prototype.view.tools.logging
+import com.example.neocafeteae1prototype.view.tools.mainLogging
 import com.example.neocafeteae1prototype.view.tools.showToast
 import com.example.neocafeteae1prototype.view_model.regisration_vm.RegistrationViewModel
 import com.vicmikhailau.maskededittext.MaskedFormatter
@@ -53,11 +54,19 @@ class AuthWithNumberFragment : BaseFragment<FragmentAuthWithNumberBinding>() {
     }
 
     private fun sendMessage() {
+<<<<<<< HEAD
         val phoneNumber = MaskedFormatter("###-###-###").formatString(binding.numberPhoneTextView.text.toString())!!.unMaskedString.toInt()
         viewModel.checkNumber(phoneNumber)
         viewModel.isNumberLocateInDB.observe(viewLifecycleOwner){
             if (it){
                 localDatabase.saveUserNumber(phoneNumber)
+=======
+        val phoneNumber = MaskedFormatter("###-###-###").formatString(binding.numberPhoneTextView.text.toString())!!.unMaskedString
+        viewModel.checkNumber(phoneNumber.toInt())
+        viewModel.isNumberLocateInDB.observe(viewLifecycleOwner){
+            if (it){
+                insertDataToSharedPreference(phoneNumber)
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
                 findNavController().navigate(AuthWithNumberFragmentDirections.actionAuthWithNumberFragmentToGetMessageAuthorization(phoneNumber))
             }else{
                 "Пожалуйста, проверьте ваш номер".showToast(requireContext(), Toast.LENGTH_LONG)

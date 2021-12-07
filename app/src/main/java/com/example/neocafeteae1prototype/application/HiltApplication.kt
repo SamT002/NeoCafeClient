@@ -7,6 +7,7 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class HiltApplication : Application() {
 
+<<<<<<< HEAD
     override fun onCreate() {
         super.onCreate()
         instance = this
@@ -18,5 +19,7 @@ class HiltApplication : Application() {
             return instance.applicationContext
         }
     }
+=======
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
 
 }

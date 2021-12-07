@@ -41,10 +41,12 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
             }
 
         }
+
     }
 
     private fun getToken() {
         val uid = FirebaseAuth.getInstance().uid
+<<<<<<< HEAD
         viewModel.JWTtoken(localDatabase.fetchUserNumber(), uid!!)
         viewModel.list.observe(viewLifecycleOwner) {
             localDatabase.saveRefreshToken(it.refresh)
@@ -57,6 +59,20 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     private fun goToNextFragment() {
         if (localDatabase.fetchAccessToken() != null){
             findNavController().navigate(R.id.action_splashFragment_to_bottomViewFragment3)
+=======
+        val number = sharedPref.getString(Consts.USER_NUMBER, "0")?.toInt()
+
+        viewModel.JWTtoken(number!!, uid!!)
+        viewModel.list.observe(viewLifecycleOwner){
+            if (it.access.isNotEmpty()){
+                binding.progress.notVisible()
+                with(sharedPref.edit()){
+                    putString(Consts.ACCESS, it.access)
+                    putString(Consts.REFRESH, it.refresh)
+                }.apply()
+                findNavController().navigate(R.id.action_splashFragment_to_bottomViewFragment3)
+            }
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
         }
     }
 

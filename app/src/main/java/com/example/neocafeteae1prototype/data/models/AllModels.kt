@@ -1,6 +1,5 @@
 package com.example.neocafeteae1prototype.data.models
 
-import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 sealed class AllModels: Serializable{
@@ -11,11 +10,14 @@ sealed class AllModels: Serializable{
 
     data class Order(val tableId:Int, val bonus:Int)
 
+<<<<<<< HEAD
     data class RefreshResponse(@SerializedName("access")
         val access: String
     )
 
 
+=======
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
 
     data class Table(
         val filialId: Int,

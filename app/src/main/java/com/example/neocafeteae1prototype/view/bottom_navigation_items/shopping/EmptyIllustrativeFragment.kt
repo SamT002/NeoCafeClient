@@ -7,6 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.neocafeteae1prototype.R
+<<<<<<< HEAD
+=======
+import com.example.neocafeteae1prototype.data.models.AllModels
+import com.example.neocafeteae1prototype.data.models.Resource
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
 import com.example.neocafeteae1prototype.databinding.FragmentEmptyIllustrativeBinding
 import com.example.neocafeteae1prototype.view.root.BaseFragment
 import com.example.neocafeteae1prototype.view_model.menu_shopping_vm.SharedViewModel
@@ -22,6 +27,22 @@ class EmptyIllustrativeFragment : BaseFragment<FragmentEmptyIllustrativeBinding>
       super.onViewCreated(view, savedInstanceState)
       val bottomNavigationView = activity?.findViewById(R.id.bottomNavigationView) as BottomNavigationView
       binding.goToMenuButton.setOnClickListener { bottomNavigationView.selectedItemId = R.id.home_nav_graph }
+<<<<<<< HEAD
+=======
+
+      sharedViewModel.list.observe(viewLifecycleOwner){
+         when(it){
+            is Resource.Success -> {
+               sharedViewModel.sortProductForShopping(it.value)
+               if(sharedViewModel.shoppingList.isNotEmpty()){
+                  findNavController().navigateUp()
+               }
+            }
+         }
+      }
+
+
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
 
       sharedViewModel.productList.observe(viewLifecycleOwner) {
          sharedViewModel.sortProductForShopping(it)

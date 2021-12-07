@@ -2,7 +2,10 @@ package com.example.neocafeteae1prototype.data.retrofit
 
 import com.example.neocafeteae1prototype.data.models.AllModels
 import com.google.gson.annotations.SerializedName
+<<<<<<< HEAD
 import retrofit2.Call
+=======
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
 import retrofit2.Response
 import retrofit2.http.*
 

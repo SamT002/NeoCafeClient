@@ -116,6 +116,7 @@ class QRcodeFragment : BaseFragment<FragmentQrcodeBinding>() {
     private fun checkTableIsFree(value: AllModels.Table) {
         if (value.status){
             table = value
+            sharedPreferences.edit().putInt(Consts.TABLE, value.id)
             CustomAlertDialog(this::lockTable, "Стол свободен", "Забранировать?").show(childFragmentManager, "TAG")
         }else{
             Snackbar.make(binding.scannerView, "Стол занят", Snackbar.LENGTH_INDEFINITE).apply {

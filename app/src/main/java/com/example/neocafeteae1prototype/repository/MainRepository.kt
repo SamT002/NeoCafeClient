@@ -25,11 +25,15 @@ class MainRepository @Inject constructor(
         return registration.sendUserData(number, password, name, birthDate)
     }
 
+<<<<<<< HEAD
     suspend fun postUserDataWithoutBirthday(
         number: Int,
         password: String,
         name: String
     ): Response<String> {
+=======
+    suspend fun postUserDataWithoutBirthday(number:Int, password: String, name:String):Response<String>{
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
         return registration.sendUserDataWithoutBirthday(number, password, name)
     }
 
@@ -65,6 +69,7 @@ class MainRepository @Inject constructor(
         return safeApiCall { qrApi.lockTable(table) }
     }
 
+<<<<<<< HEAD
     suspend fun getAllProduct(): Resource<MutableList<AllModels.Popular>> {
         return safeApiCall { shoppingAPI.getAllProduct() }
     }
@@ -74,6 +79,14 @@ class MainRepository @Inject constructor(
         productList: List<AllModels.FinishProduct>,
     ) {
         return shoppingAPI.sendProductList(order, productList)
+=======
+    suspend fun getAllProduct():Resource<MutableList<AllModels.Popular>>{
+        return safeApiCall { shoppingAPI.getAllProduct() }
+    }
+
+    suspend fun sendProductList(order:AllModels.Order, productList: List<AllModels.FinishProduct>, token:String):Resource<String>{
+        return safeApiCall { shoppingAPI.sendProductList(token.bearerToken(), order, productList) }
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
     }
 
 }

@@ -8,12 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.neocafeteae1prototype.R
 import com.example.neocafeteae1prototype.databinding.AlertDialogLayoutBinding
+<<<<<<< HEAD
 import kotlin.reflect.KFunction1
+=======
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
 
 
 class ShoppingAlertDialog(
     var function: () -> Unit,
+<<<<<<< HEAD
     val function2: (Int) -> Unit,
+=======
+    var function2: () -> Unit,
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
     var title: String?,
     var message: String?
 ) : BaseAlertDialog<AlertDialogLayoutBinding>() {
@@ -44,10 +51,19 @@ class ShoppingAlertDialog(
 
         binding.positiveButton.setOnClickListener {
             function()
+<<<<<<< HEAD
         }
 
         binding.negativeButton.setOnClickListener {
             function2(0)
+=======
+            dismiss()
+        }
+
+        binding.negativeButton.setOnClickListener {
+            function2()
+            dismiss()
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
         }
     }
 }

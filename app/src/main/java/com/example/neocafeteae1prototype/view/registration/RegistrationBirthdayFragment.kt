@@ -82,8 +82,15 @@ class RegistrationBirthdayFragment : BaseFragment<FragmentRegistrationBirthdayBi
     private fun getToken(uid: String, number: Int) {
         viewModel.JWTtoken(number, uid)
         viewModel.tokens.observe(viewLifecycleOwner){
+<<<<<<< HEAD
             sharedPreferences.saveAccessToken(it.access)
             sharedPreferences.saveRefreshToken(it.refresh)
+=======
+            with(sharedPref.edit()){
+                putString(Consts.ACCESS, it.access)
+                putString(Consts.REFRESH, it.refresh)
+            }
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
         }
     }
 

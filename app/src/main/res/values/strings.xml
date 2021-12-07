@@ -58,6 +58,9 @@
     <string name="go_to_menu">Перейти в меню</string>
     <string name="Sum">Сумма:</string>
     <string name="Bonus">Бонусы:</string>
+<<<<<<< HEAD
     <string name="date_format">MM/dd/yyyy</string>
     <string name="hour_format">HH:mm</string>
+=======
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
 </resources>

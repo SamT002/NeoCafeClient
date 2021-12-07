@@ -60,9 +60,19 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>(), RecyclerItemClickListe
             R.id.all -> "Все"
             else -> ""
         }
+<<<<<<< HEAD
         sharedViewModel.productList.observe(viewLifecycleOwner, {
             val sorted = sharedViewModel.sort(checkedText, it)
             recyclerAdapter.setList(sorted, checkedText)
+=======
+        sharedViewModel.list.observe(viewLifecycleOwner, {
+            when (it){
+                is Resource.Success -> {
+                    val sorted = sharedViewModel.sort(checkedText, it.value)
+                    recyclerAdapter.setList(sorted, checkedText)
+                }
+            }
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
         })
     }
 

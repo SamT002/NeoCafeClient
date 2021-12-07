@@ -35,6 +35,7 @@
                     style="@style/TextView_14sp_Bold"
                     android:layout_marginTop="@dimen/margin_6_dp"
                     android:layout_marginEnd="@dimen/margin_6_dp"
+<<<<<<< HEAD
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,6 +47,12 @@
                     android:layout_marginStart="@dimen/margin_6_dp"
                     android:layout_marginTop="@dimen/margin_6_dp"/>
 
+=======
+                    android:text="13 : 38"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
                 <View
                     android:id="@+id/border"
                     android:layout_width="match_parent"

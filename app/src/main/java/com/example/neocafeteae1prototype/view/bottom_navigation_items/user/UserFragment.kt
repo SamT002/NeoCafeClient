@@ -27,6 +27,7 @@ class UserFragment : BaseFragmentWithErrorLiveData<FragmentUserBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getUserData()
+<<<<<<< HEAD
         setUpButtonsListener()
     }
 
@@ -40,6 +41,41 @@ class UserFragment : BaseFragmentWithErrorLiveData<FragmentUserBinding>() {
                     userNameTextView.text = it.first_name
                     nameEditText.setText(it.first_name)
                     progress.notVisible()
+=======
+        with(binding){
+            shoppingHistory.setOnClickListener { findNavController().navigate(UserFragmentDirections.actionUserFragmentToUserShoppingHistory()) }
+            userNameTextView.text = sharedPreferences.getString(Consts.USER_NAME,"")
+            nameEditText.setText(sharedPreferences.getString(Consts.USER_NAME, ""))
+            nameEditText.addTextChangedListener {
+                userNameTextView.text = it.toString()
+                viewModel.changeUserName(token, it.toString())
+
+            }
+            exit.setOnClickListener {
+                CustomAlertDialog(this@UserFragment::deleteAccount, "Вы точно хотите выйти из аккаунта?", "Для обратной регистрации зайдите в приложение")
+                    .show(childFragmentManager, "TAG")
+
+            }
+        }
+    }
+
+    private fun getUserData() {
+        viewModel.getUserInfo(token)
+        viewModel.userData.observe(viewLifecycleOwner) {
+            with(binding) {
+                when(it){
+                    is Resource.Success -> { it.value
+                        numberPhoneTextView.text = it.value.number.toString()
+                        birthdayEditText.text = it.value.birthDate
+                        userNameTextView.text = it.value.first_name
+                        nameEditText.setText(it.value.first_name)
+                        progress.notVisible()
+                        bonusResult.text = viewModel.bonus.toString()
+                    }
+                    is Resource.Loading -> {
+                        progress.visible()
+                    }
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
                 }
             }
 

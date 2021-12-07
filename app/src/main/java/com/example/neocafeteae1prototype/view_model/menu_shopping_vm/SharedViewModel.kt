@@ -8,7 +8,10 @@ import com.example.neocafeteae1prototype.R
 import com.example.neocafeteae1prototype.data.models.AllModels
 import com.example.neocafeteae1prototype.data.models.Resource
 import com.example.neocafeteae1prototype.repository.MainRepository
+<<<<<<< HEAD
 import com.example.neocafeteae1prototype.view.root.BaseViewModel
+=======
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
 import com.example.neocafeteae1prototype.view.tools.mainLogging
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -24,7 +27,11 @@ class SharedViewModel @Inject constructor(private val repository: MainRepository
     override var errorLiveData: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     private var sortedList = mutableListOf<AllModels.Popular>()
     var bonus = 50
+<<<<<<< HEAD
     val productList = MutableLiveData<MutableList<AllModels.Popular>>()
+=======
+    val list = MutableLiveData<Resource<MutableList<AllModels.Popular>>>()
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
     val userData = MutableLiveData<AllModels.User>()
     val menuList = mutableListOf<AllModels.Menu>(
         AllModels.Menu("Чай", R.drawable.tea),
@@ -40,6 +47,7 @@ class SharedViewModel @Inject constructor(private val repository: MainRepository
         getAllProduct()
     }
 
+<<<<<<< HEAD
     fun getUserInfo() {
         viewModelScope.launch {
             repository.getUserInfo().let {
@@ -66,6 +74,29 @@ class SharedViewModel @Inject constructor(private val repository: MainRepository
         val myList = mutableListOf<AllModels.Popular>()
         return if (category == "Все") {
             list
+=======
+    fun getUserInfo(token: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = async { repository.getUserInfo(token) }.await()
+            if (response is Resource.Success) {
+                userData.postValue(response.value!!)
+            }
+        }
+    }
+
+    private fun getAllProduct() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = async { repository.getAllProduct() }.await()
+            list.postValue(response)
+        }
+    }
+
+    fun sort(category: String, list: MutableList<AllModels.Popular>): MutableList<AllModels.Popular> {
+        val myList = mutableListOf<AllModels.Popular>()
+
+        if (category == "Все") {
+            return list
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
         }else{
             list.forEach {
                 if (it.category_name == category) {
@@ -73,8 +104,12 @@ class SharedViewModel @Inject constructor(private val repository: MainRepository
                 }
             }
             sortedList = myList
+<<<<<<< HEAD
 
             sortedList
+=======
+            return sortedList
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
         }
     }
 
@@ -107,7 +142,11 @@ class SharedViewModel @Inject constructor(private val repository: MainRepository
 
     fun getBonus(token:String){
         CoroutineScope(Dispatchers.IO).launch {
+<<<<<<< HEAD
             val bonusResponse = repository.getBonus()
+=======
+            val bonusResponse = repository.getBonus(token)
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
             if (bonusResponse.isSuccessful){
                 bonus = bonusResponse.body() ?: 0
             }

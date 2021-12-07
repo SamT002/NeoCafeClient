@@ -14,8 +14,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.neocafeteae1prototype.R
+<<<<<<< HEAD
 import com.example.neocafeteae1prototype.data.local.LocalDatabase
 import com.example.neocafeteae1prototype.databinding.FragmentGetMessageAuthorizationBinding
+=======
+import com.example.neocafeteae1prototype.data.Consts
+import com.example.neocafeteae1prototype.data.models.Resource
+import com.example.neocafeteae1prototype.databinding.FragmentGetMessageAuthorizationBinding
+import com.example.neocafeteae1prototype.view.registration.ReceiveMessageFirebaseFragmentDirections
+import com.example.neocafeteae1prototype.view.tools.notVisible
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
 import com.example.neocafeteae1prototype.view.tools.showSnackBar
 import com.example.neocafeteae1prototype.view.tools.showToast
 import com.example.neocafeteae1prototype.view.tools.visible
@@ -150,12 +158,24 @@ class GetMessageAuthorization : Fragment() {
     private fun signIn(phone: PhoneAuthCredential) {
         FirebaseAuth.getInstance().signInWithCredential(phone).addOnCompleteListener { task ->
             if (task.isSuccessful) {
+<<<<<<< HEAD
                 _binding?.otpTextView?.setOTP(phone.smsCode!!)
                 getData()
+=======
+                _binding?.progress?.visible()
+                _binding?.otpTextView?.setOTP(phone.smsCode!!)
+                val uid = FirebaseAuth.getInstance().uid
+                val number = sharedPref.getString(Consts.USER_NUMBER, "0")?.toInt()
+                viewModel.JWTtoken(number!!, uid!!)
+                viewModel.tokens.observe(viewLifecycleOwner){
+                    listenUserInfo(it.access)
+                }
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
             }
         }
     }
 
+<<<<<<< HEAD
     private fun getData(){
         _binding?.progress?.visible()
         val uid = FirebaseAuth.getInstance().uid
@@ -165,6 +185,20 @@ class GetMessageAuthorization : Fragment() {
             localDatabase.saveRefreshToken(it.refresh)
         }
         findNavController().navigate(GetMessageAuthorizationDirections.actionGetMessageAuthorizationToBottomViewFragment3())
+=======
+    @SuppressLint("CommitPrefEdits")
+    private fun listenUserInfo(access: String) {
+        viewModel.getUserInfo(access)
+        viewModel.userInfo.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success -> {
+                    _binding?.progress?.notVisible()
+                    sharedPref.edit().putString(Consts.USER_NAME, it.value.first_name)
+                    findNavController().navigate(GetMessageAuthorizationDirections.actionGetMessageAuthorizationToBottomViewFragment3())
+                }
+            }
+        }
+>>>>>>> 3ca4717 (Connected Shopping Fragment and connect QR Fragment)
     }
 
     override fun onDestroyView() {
